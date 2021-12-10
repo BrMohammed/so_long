@@ -21,7 +21,16 @@ typedef struct s_data
 	char	*plat_path;
 	void *plat;
 	char **result;
-	
+
+	void *coin;
+	char *coin_path;
+
+	void *door_close;
+	char *door_cloce_path;
+
+	void *door_open;
+	char *door_open_path;
+
 
 }	t_data;
 
