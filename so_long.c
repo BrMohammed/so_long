@@ -20,12 +20,12 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->whith += 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
-			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			if(data->result[data->high / 80][data->whith /80] == 'e' && coin_point == 0)
 			{
 				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
-				if(coin_point == 0)
-					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
+			if(coin_point == 0)
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 		}
 		if(win == 0 && (key == 0 || key == 123) && (data->result[data->high / 80][(data->whith /80) - 1] == '0' || data->result[data->high / 80][(data->whith /80) - 1] == 'p' 
 			|| data->result[data->high / 80][(data->whith /80) - 1] == 'c' || (data->result[data->high / 80][(data->whith /80) - 1] == 'e' && coin_point == 0))) // a or left
@@ -40,7 +40,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->whith -= 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
-			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			if(data->result[data->high / 80][data->whith /80] == 'e' && coin_point == 0)
 			{
 				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
@@ -60,7 +60,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->high -= 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
-			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			if(data->result[data->high / 80][data->whith /80] == 'e' && coin_point == 0)
 			{
 				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
@@ -80,7 +80,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->high += 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
-			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			if(data->result[data->high / 80][data->whith /80] == 'e' && coin_point == 0)
 			{
 				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
