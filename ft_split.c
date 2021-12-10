@@ -110,7 +110,7 @@ char	**ft_split(char *s, char c)
 		return (NULL);
 	c1[countpart] = NULL;
 	countpart = 0;
-	(s, c, c1, countpart);
+	countstr_lop(s, c, c1, countpart);
 	if (!c1)
 		return (NULL);
 	countpart = 0;

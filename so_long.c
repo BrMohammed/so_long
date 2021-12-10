@@ -1,25 +1,28 @@
 #include "so_long.h"
 
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int key(int key, t_data *data)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+		if(key == 0)
+		{
+			//mlx_destroy_image(data->mlx, data->player);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+			data->whith += 80;;
+			printf("%d..%d\n",data->whith,data->high);
+		}
+			
+	return(0);
 }
 
 int main(int ac, char **av)
 {
-	void *mlx;
-	void *mlx_win;
-    //t_data	img;
-    void *player;
+	//void *mlx;
+	//void *mlx_win;
+    t_data	data;
 	void *walls;
 	void *plat;
 
 
-    char	*player_path = "./assets/idle01.xpm";
+    data.player_path = "./assets/idle01.xpm";
 	char	*walls_path = "./assets/green.xpm";
 	char	*plat_path = "./assets/water.xpm";
 
@@ -57,26 +60,30 @@ int main(int ac, char **av)
 	int i = 0;
 
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx,x*80,y*80,"so_long");
+	data.mlx = mlx_init();
+	data.mlx_win = mlx_new_window(data.mlx,x*80,y*80,"so_long");
 
 
-	walls = mlx_xpm_file_to_image(mlx, walls_path, &img_width, &img_height);
-	plat = mlx_xpm_file_to_image(mlx, plat_path, &img_width, &img_height);
-	player = mlx_xpm_file_to_image(mlx, player_path, &img_width, &img_height);
+	walls = mlx_xpm_file_to_image(data.mlx, walls_path, &img_width, &img_height);
+	plat = mlx_xpm_file_to_image(data.mlx, plat_path, &img_width, &img_height);
+	data.player = mlx_xpm_file_to_image(data.mlx, data.player_path, &img_width, &img_height);
 	while(bufer[fd] != '\0')
 	{
 		
 		if(bufer[fd] == '1')
 		{
-			mlx_put_image_to_window(mlx, mlx_win, walls, whith, high);
+			mlx_put_image_to_window(data.mlx, data.mlx_win, walls, whith, high);
 			whith += 80;
 		}
 		else if(bufer[fd] == '0' || bufer[fd] == 'p')
 		{
-			mlx_put_image_to_window(mlx, mlx_win, plat, whith, high);
+			mlx_put_image_to_window(data.mlx, data.mlx_win, plat, whith, high);
 			if(bufer[fd] == 'p')
-				mlx_put_image_to_window(mlx, mlx_win, player, whith, high);
+			{
+				mlx_put_image_to_window(data.mlx, data.mlx_win, data.player, whith, high);
+				data.high = high;
+				data.whith = whith;
+			}
 			whith += 80;
 		}
 		fd++;
@@ -88,9 +95,11 @@ int main(int ac, char **av)
 		}
 	}
 
+	mlx_key_hook(data.mlx_win,key,&data);
+	
    //img.img = mlx_new_image(mlx, 1920, 1080);
 
     //img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
 
-    mlx_loop(mlx);
+    mlx_loop(data.mlx);
 }
