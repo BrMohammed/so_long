@@ -30,9 +30,9 @@ int key(int key, t_data *data)
 		{
 			if(data->result[data->high / 80][(data->whith /80) - 1] == 'c')
 			{
-				data->whith += 80;
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 				data->whith -= 80;
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+				data->whith += 80;
 				coin_point--;
 			}
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
@@ -50,9 +50,9 @@ int key(int key, t_data *data)
 		{
 			if(data->result[(data->high / 80) - 1][data->whith /80] == 'c')
 			{
-				data->whith += 80;
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 				data->whith -= 80;
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+				data->whith += 80;
 				coin_point--;
 			}
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
