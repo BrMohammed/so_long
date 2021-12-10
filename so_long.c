@@ -1,10 +1,11 @@
 #include "so_long.h"
 
 int coin_point = 0;
+int win = 0;
 int key(int key, t_data *data)
 {
 	//w=13  s=1  d=2 a=0 
-		if(key == 2 && (data->result[data->high / 80][(data->whith /80) + 1] == '0' || data->result[data->high / 80][(data->whith /80) + 1] == 'p' 
+		if(win == 0 && key == 2 && (data->result[data->high / 80][(data->whith /80) + 1] == '0' || data->result[data->high / 80][(data->whith /80) + 1] == 'p' 
 			|| data->result[data->high / 80][(data->whith /80) + 1] == 'c' || (data->result[data->high / 80][(data->whith /80) + 1] == 'e' && coin_point == 0))) //d
 		{
 			if(data->result[data->high / 80][(data->whith /80) + 1] == 'c')
@@ -17,9 +18,14 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->whith += 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			{
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				win = 1;
+			}
 			
 		}
-		if(key == 0 && (data->result[data->high / 80][(data->whith /80) - 1] == '0' || data->result[data->high / 80][(data->whith /80) - 1] == 'p' 
+		if(win == 0 && key == 0 && (data->result[data->high / 80][(data->whith /80) - 1] == '0' || data->result[data->high / 80][(data->whith /80) - 1] == 'p' 
 			|| data->result[data->high / 80][(data->whith /80) - 1] == 'c' || (data->result[data->high / 80][(data->whith /80) - 1] == 'e' && coin_point == 0))) // a
 		{
 			if(data->result[data->high / 80][(data->whith /80) - 1] == 'c')
@@ -35,10 +41,11 @@ int key(int key, t_data *data)
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
 				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				win = 1;
 			}
 			
 		}
-		if(key == 13 && (data->result[(data->high / 80) - 1][data->whith /80] == '0' || data->result[(data->high / 80) - 1][data->whith /80] == 'p' 
+		if(win == 0 && key == 13 && (data->result[(data->high / 80) - 1][data->whith /80] == '0' || data->result[(data->high / 80) - 1][data->whith /80] == 'p' 
 			|| data->result[(data->high / 80) - 1][data->whith /80] == 'c' || (data->result[(data->high / 80) - 1][data->whith /80] == 'e' && coin_point == 0))) // w
 		{
 			if(data->result[(data->high / 80) - 1][data->whith /80] == 'c')
@@ -51,9 +58,14 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->high -= 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			{
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				win = 1;
+			}
 			
 		}
-		if(key == 1 && (data->result[(data->high / 80) + 1][data->whith /80] == '0' || data->result[(data->high / 80) + 1][data->whith /80] == 'p' 
+		if(win == 0 && key == 1 && (data->result[(data->high / 80) + 1][data->whith /80] == '0' || data->result[(data->high / 80) + 1][data->whith /80] == 'p' 
 			|| data->result[(data->high / 80) + 1][data->whith /80] == 'c' || (data->result[(data->high / 80) + 1][data->whith /80] == 'e' && coin_point == 0))) // s
 		{
 			if(data->result[(data->high / 80) + 1][data->whith /80] == 'c')
@@ -66,6 +78,11 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->high += 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
+			{
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				win = 1;
+			}
 			
 		}
 	return(0);
