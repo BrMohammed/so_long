@@ -3,8 +3,6 @@
 int key(int key, t_data *data)
 {
 	//w=13  s=1  d=2 a=0 
-
-
 		if(key == 2 && (data->result[data->high / 80][(data->whith /80) + 1] == '0' || data->result[data->high / 80][(data->whith /80) + 1] == 'p')) //d
 		{
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
@@ -17,7 +15,7 @@ int key(int key, t_data *data)
 			data->whith -= 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 		}
-		if(key == 13 && (data->result[(data->high / 80) - 1][data->whith /80] == '0' || data->result[(data->high / 80) - 1][data->whith /80] = 'p')) // w
+		if(key == 13 && (data->result[(data->high / 80) - 1][data->whith /80] == '0' || data->result[(data->high / 80) - 1][data->whith /80] == 'p')) // w
 		{
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->high -= 80;
