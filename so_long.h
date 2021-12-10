@@ -18,6 +18,8 @@ typedef struct s_data
 	int high;
 	int whith;
 	char	*player_path;
+	char	*plat_path;
+	void *plat;
 
 }	t_data;
 

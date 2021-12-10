@@ -2,14 +2,33 @@
 
 int key(int key, t_data *data)
 {
-		if(key == 0)
+	//w=13  s=1  d=2 a=0 
+
+
+		if(key == 2) //d
 		{
-			//mlx_destroy_image(data->mlx, data->player);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+			data->whith += 80;
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
-			data->whith += 80;;
-			printf("%d..%d\n",data->whith,data->high);
 		}
-			
+		if(key == 0) // a
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+			data->whith -= 80;
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+		}
+		if(key == 13) // w
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+			data->high -= 80;
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+		}
+		if(key == 1) // s
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+			data->high += 80;
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+		}
 	return(0);
 }
 
@@ -19,12 +38,12 @@ int main(int ac, char **av)
 	//void *mlx_win;
     t_data	data;
 	void *walls;
-	void *plat;
+	
 
 
     data.player_path = "./assets/idle01.xpm";
 	char	*walls_path = "./assets/green.xpm";
-	char	*plat_path = "./assets/water.xpm";
+	data.plat_path = "./assets/water.xpm";
 
     int		img_width ;
 	int		img_height ;
@@ -65,7 +84,7 @@ int main(int ac, char **av)
 
 
 	walls = mlx_xpm_file_to_image(data.mlx, walls_path, &img_width, &img_height);
-	plat = mlx_xpm_file_to_image(data.mlx, plat_path, &img_width, &img_height);
+	data.plat = mlx_xpm_file_to_image(data.mlx, data.plat_path, &img_width, &img_height);
 	data.player = mlx_xpm_file_to_image(data.mlx, data.player_path, &img_width, &img_height);
 	while(bufer[fd] != '\0')
 	{
@@ -77,7 +96,7 @@ int main(int ac, char **av)
 		}
 		else if(bufer[fd] == '0' || bufer[fd] == 'p')
 		{
-			mlx_put_image_to_window(data.mlx, data.mlx_win, plat, whith, high);
+			mlx_put_image_to_window(data.mlx, data.mlx_win, data.plat, whith, high);
 			if(bufer[fd] == 'p')
 			{
 				mlx_put_image_to_window(data.mlx, data.mlx_win, data.player, whith, high);

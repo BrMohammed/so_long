@@ -11,7 +11,7 @@ PU = git push origin master
 commit = git log --graph --oneline --decorate HEAD^..HEAD 
 
 push :
-	
+	@$(commit)
 	@$(ADD)
 	$(read)
 	$(PU)
