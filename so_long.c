@@ -5,6 +5,7 @@ int win = 0;
 int key(int key, t_data *data)
 {
 	//w=13  s=1  d=2 a=0 
+
 		if(win == 0 && key == 2 && (data->result[data->high / 80][(data->whith /80) + 1] == '0' || data->result[data->high / 80][(data->whith /80) + 1] == 'p' 
 			|| data->result[data->high / 80][(data->whith /80) + 1] == 'c' || (data->result[data->high / 80][(data->whith /80) + 1] == 'e' && coin_point == 0))) //d
 		{
@@ -20,10 +21,11 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 				win = 1;
 			}
-			
+				if(coin_point == 0)
+					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 		}
 		if(win == 0 && key == 0 && (data->result[data->high / 80][(data->whith /80) - 1] == '0' || data->result[data->high / 80][(data->whith /80) - 1] == 'p' 
 			|| data->result[data->high / 80][(data->whith /80) - 1] == 'c' || (data->result[data->high / 80][(data->whith /80) - 1] == 'e' && coin_point == 0))) // a
@@ -40,19 +42,20 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 				win = 1;
 			}
-			
+			if(coin_point == 0)
+					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 		}
 		if(win == 0 && key == 13 && (data->result[(data->high / 80) - 1][data->whith /80] == '0' || data->result[(data->high / 80) - 1][data->whith /80] == 'p' 
 			|| data->result[(data->high / 80) - 1][data->whith /80] == 'c' || (data->result[(data->high / 80) - 1][data->whith /80] == 'e' && coin_point == 0))) // w
 		{
 			if(data->result[(data->high / 80) - 1][data->whith /80] == 'c')
 			{
-				data->whith -= 80;
+				data->high -= 80;
 				mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
-				data->whith += 80;
+				data->high += 80;
 				coin_point--;
 			}
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
@@ -60,19 +63,20 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 				win = 1;
 			}
-			
+			if(coin_point == 0)
+					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 		}
 		if(win == 0 && key == 1 && (data->result[(data->high / 80) + 1][data->whith /80] == '0' || data->result[(data->high / 80) + 1][data->whith /80] == 'p' 
 			|| data->result[(data->high / 80) + 1][data->whith /80] == 'c' || (data->result[(data->high / 80) + 1][data->whith /80] == 'e' && coin_point == 0))) // s
 		{
 			if(data->result[(data->high / 80) + 1][data->whith /80] == 'c')
 			{
-				data->whith += 80;
+				data->high += 80;
 				mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
-				data->whith -= 80;
+				data->high -= 80;
 				coin_point--;
 			}
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
@@ -80,10 +84,11 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->whith, data->high);
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 				win = 1;
 			}
-			
+			if(coin_point == 0)
+					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
 		}
 	return(0);
 }
@@ -146,6 +151,7 @@ int main(int ac, char **av)
 	data.player = mlx_xpm_file_to_image(data.mlx, data.player_path, &img_width, &img_height);
 	data.coin = mlx_xpm_file_to_image(data.mlx, data.coin_path, &img_width, &img_height);
 	data.door_close = mlx_xpm_file_to_image(data.mlx, data.door_cloce_path, &img_width, &img_height);
+	data.door_open = mlx_xpm_file_to_image(data.mlx, data.door_open_path, &img_width, &img_height);
 	while(bufer[fd] != '\0')
 	{
 		
@@ -171,6 +177,8 @@ int main(int ac, char **av)
 			if(bufer[fd] == 'e')
 			{
 				mlx_put_image_to_window(data.mlx, data.mlx_win, data.door_close, whith, high);
+				data.door_high = high;
+				data.door_whith = whith;
 			}
 			whith += 80;
 		}
@@ -182,9 +190,7 @@ int main(int ac, char **av)
 			//printf("%d\n",high);
 		}
 	}
-
 	mlx_key_hook(data.mlx_win,key,&data);
-	
    //img.img = mlx_new_image(mlx, 1920, 1080);
 
     //img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);

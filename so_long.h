@@ -31,6 +31,9 @@ typedef struct s_data
 	void *door_open;
 	char *door_open_path;
 
+	int door_high;
+	int door_whith;
+
 
 }	t_data;
 
