@@ -20,6 +20,8 @@ typedef struct s_data
 	char	*player_path;
 	char	*plat_path;
 	void *plat;
+	char **result;
+	
 
 }	t_data;
 
