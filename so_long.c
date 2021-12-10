@@ -22,8 +22,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
-				win = 1;
+				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
 				if(coin_point == 0)
 					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
@@ -43,8 +42,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
-				win = 1;
+				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
 			if(coin_point == 0)
 					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
@@ -64,8 +62,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
-				win = 1;
+				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
 			if(coin_point == 0)
 					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
@@ -85,8 +82,7 @@ int key(int key, t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 			if(data->result[data->high / 80][(data->whith /80) ] == 'e' && coin_point == 0)
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
-				win = 1;
+				mlx_destroy_window(data->mlx,data->mlx_win);
 			}
 			if(coin_point == 0)
 					mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open,data->door_whith, data->door_high);
