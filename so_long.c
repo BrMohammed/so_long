@@ -39,7 +39,7 @@ int key(int key, t_data *data)
 			}
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 			data->whith -= 80;
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player_left,data->whith, data->high);
 			if(data->result[data->high / 80][data->whith /80] == 'e' && coin_point == 0)
 			{
 				mlx_destroy_window(data->mlx,data->mlx_win);
@@ -106,6 +106,7 @@ int main(int ac, char **av)
 	data.coin_path = "./assets/coin.xpm";
 	data.door_cloce_path = "./assets/closedoor.xpm";
 	data.door_open_path = "./assets/opendoor.xpm";
+	data.player_left_path = "./assets/Idle_left.xpm";
 
     int		img_width = 80;
 	int		img_height = 80;
@@ -150,6 +151,7 @@ int main(int ac, char **av)
 	data.coin = mlx_xpm_file_to_image(data.mlx, data.coin_path, &img_width, &img_height);
 	data.door_close = mlx_xpm_file_to_image(data.mlx, data.door_cloce_path, &img_width, &img_height);
 	data.door_open = mlx_xpm_file_to_image(data.mlx, data.door_open_path, &img_width, &img_height);
+	data.player_left = mlx_xpm_file_to_image(data.mlx, data.player_left_path, &img_width, &img_height);
 	while(bufer[fd] != '\0')
 	{
 		

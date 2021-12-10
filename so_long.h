@@ -14,10 +14,17 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*mlx_win;
+
 	void *player;
+	char	*player_path;
+
+	void *player_left;
+	char	*player_left_path;
+
+
 	int high;
 	int whith;
-	char	*player_path;
+	
 	char	*plat_path;
 	void *plat;
 	char **result;
@@ -33,6 +40,8 @@ typedef struct s_data
 
 	int door_high;
 	int door_whith;
+
+
 
 
 }	t_data;
