@@ -46,10 +46,6 @@ typedef struct s_data
 
 }	t_data;
 
-
-
-
-
 char	**ft_split(char *s, char c);
 
 #endif

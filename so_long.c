@@ -115,6 +115,7 @@ int main(int ac, char **av)
 
     int		img_width = 80;
 	int		img_height = 80;
+	int temp ;
 
 	//////////////////
 	int fd;
@@ -138,12 +139,50 @@ int main(int ac, char **av)
 		y++;
 		
 	}
+	int i = 0;
+	int len = 0;
+	while (data.result[i])
+	{
+		len = 0;
+		while(data.result[i][len])
+		{
+			if(data.result[0][len]== '0')
+			{
+				printf("%s\n","ERROR");
+				exit(0);
+			}
+			if(data.result[i][0]== '0')
+			{
+				printf("%s\n","ERROR");
+				exit(0);
+			}
+			len++;
+		}
+		len--;
+		if(data.result[i][len]== '0')
+			{
+				printf("%s\n","ERROR");
+				exit(0);
+			}
+		i++;
+	}
+	i--;
+	len = 0;
+	while(data.result[i][len])
+	{
+		if(data.result[i][len]== '0')
+		{
+			printf("%s\n","ERROR");
+			exit(0);
+		}
+		len++;
+	}
 	////////////////////
 	fd = 0;
 	int whith = 0;
 	int high = 0;
 	int more = 0;
-	int i = 0;
+	
 
 
 	data.mlx = mlx_init();
