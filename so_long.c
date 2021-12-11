@@ -9,11 +9,11 @@ int key(int key, t_data *data)
 	//up = 126  right = 124 left = 123 down = 125
 	//esc = 53
 	int win = 0;
+	int player_count = 0;
 	char d = data->result[(data->high / 80)][(data->whith /80) + 1];
 	char w = data->result[(data->high / 80) - 1][data->whith /80];
 	char a = data->result[data->high / 80][(data->whith /80) - 1];
 	char s = data->result[(data->high / 80) + 1][data->whith /80];
-
 
 	if (key == 53)
 		exit(0);
@@ -96,6 +96,59 @@ int key(int key, t_data *data)
 	return (0);
 }
 
+static void error_game(t_data data)
+{
+	int i = 0;
+	int len = 0;
+	int lenth_temp =0;
+	int lenth =0;
+	while (data.result[i])
+	{
+		len = 0;
+		while(data.result[i][len])
+		{
+			if(data.result[0][len]== '0')
+			{
+				printf("%s\n","ERROR");
+				exit(0);
+			}
+			if(data.result[i][0]== '0')
+			{
+				printf("%s\n","ERROR");
+				exit(0);
+			}
+			len++;
+		}
+		len--;
+		if(data.result[0][len])
+		{
+			lenth_temp = len;
+		}
+		if(lenth_temp != len)
+		{
+			printf("%s\n","ERROR");
+			exit(0);
+		}
+		if(data.result[i][len]== '0')
+			{
+				printf("%s\n","ERROR");
+				exit(0);
+			}
+		i++;
+	}
+	i--;
+	len = 0;
+	while(data.result[i][len])
+	{
+		if(data.result[i][len]== '0')
+		{
+			printf("%s\n","ERROR");
+			exit(0);
+		}
+		len++;
+	}
+}
+
 int main(int ac, char **av)
 {
 	//void *mlx;
@@ -139,49 +192,22 @@ int main(int ac, char **av)
 		y++;
 		
 	}
-	int i = 0;
-	int len = 0;
-	while (data.result[i])
-	{
-		len = 0;
-		while(data.result[i][len])
-		{
-			if(data.result[0][len]== '0')
-			{
-				printf("%s\n","ERROR");
-				exit(0);
-			}
-			if(data.result[i][0]== '0')
-			{
-				printf("%s\n","ERROR");
-				exit(0);
-			}
-			len++;
-		}
-		len--;
-		if(data.result[i][len]== '0')
-			{
-				printf("%s\n","ERROR");
-				exit(0);
-			}
-		i++;
-	}
-	i--;
-	len = 0;
-	while(data.result[i][len])
-	{
-		if(data.result[i][len]== '0')
-		{
-			printf("%s\n","ERROR");
-			exit(0);
-		}
-		len++;
-	}
+
+	///////////////////  error  \\\\\\\\\\\\\\\\\\\\\\
+	
+	error_game(data);
+
+
+	///////////////////  error  \\\\\\\\\\\\\\\\\\\\\\
+	
 	////////////////////
 	fd = 0;
 	int whith = 0;
 	int high = 0;
 	int more = 0;
+	int coin_cont = 0;
+	int player_cont = 0;
+	int door_cont = 0;
 	
 
 
@@ -209,17 +235,20 @@ int main(int ac, char **av)
 			mlx_put_image_to_window(data.mlx, data.mlx_win, data.plat, whith, high);
 			if(bufer[fd] == 'p')
 			{
+				player_cont++;
 				mlx_put_image_to_window(data.mlx, data.mlx_win, data.player, whith, high);
 				data.high = high;
 				data.whith = whith;
 			}
 			if(bufer[fd] == 'c')
 			{
+				coin_cont++;
 				mlx_put_image_to_window(data.mlx, data.mlx_win, data.coin, whith, high);
 				coin_point++;
 			}
 			if(bufer[fd] == 'e')
 			{
+				door_cont++;
 				mlx_put_image_to_window(data.mlx, data.mlx_win, data.door_close, whith, high);
 				data.door_high = high;
 				data.door_whith = whith;
@@ -234,7 +263,11 @@ int main(int ac, char **av)
 			//printf("%d\n",high);
 		}
 	}
-	
+	if(coin_cont < 1 || player_cont != 1|| door_cont != 1)
+	{
+		printf("%s\n","ERROR");
+		exit(0);
+	}
 	mlx_key_hook(data.mlx_win,&key,&data);
    //img.img = mlx_new_image(mlx, 1920, 1080);
 
