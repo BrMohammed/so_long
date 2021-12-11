@@ -1,7 +1,7 @@
 #include "so_long.h"
 
 int coin_point = 0;
-
+int player_count = 0;
 
 int key(int key, t_data *data)
 {
@@ -9,7 +9,7 @@ int key(int key, t_data *data)
 	//up = 126  right = 124 left = 123 down = 125
 	//esc = 53
 	int win = 0;
-	int player_count = 0;
+	
 	char d = data->result[(data->high / 80)][(data->whith /80) + 1];
 	char w = data->result[(data->high / 80) - 1][data->whith /80];
 	char a = data->result[data->high / 80][(data->whith /80) - 1];
@@ -29,6 +29,8 @@ int key(int key, t_data *data)
 	if(win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'p' //////////////////d or right
 		|| d == 'c')) 
 	{
+		player_count ++;
+		printf("%d\n",player_count);
 		if(d == 'c' && coin_point != 0)
 		{
 			data->result[(data->high / 80)][(data->whith /80) + 1] = '0';
@@ -45,6 +47,8 @@ int key(int key, t_data *data)
 	if(win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'p' /////////////// a or left
 		|| a == 'c' )) 
 	{
+		player_count ++;
+		printf("%d\n",player_count);
 		if(a == 'c' && coin_point != 0)
 		{
 			data->result[data->high / 80][(data->whith /80) - 1] = '0';
@@ -61,6 +65,8 @@ int key(int key, t_data *data)
 	if(win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'p' /////////// w or up
 		|| w == 'c' )) 
 	{
+		player_count ++;
+		printf("%d\n",player_count);
 		if(w == 'c')
 		{
 			data->result[(data->high / 80) - 1][data->whith /80] = '0';
@@ -76,6 +82,8 @@ int key(int key, t_data *data)
 	if(win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p' //////////// s or down
 		|| s == 'c'))
 	{
+		player_count ++;
+		printf("%d\n",player_count);
 		if(s == 'c' && coin_point != 0)
 		{
 			data->result[(data->high / 80) + 1][data->whith /80] = '0';
