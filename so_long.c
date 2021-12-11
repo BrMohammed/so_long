@@ -26,7 +26,9 @@ int key(int key, t_data *data)
 	if(w =='e' && coin_point == 0)
 		exit(0);
 
-	if(win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'p' //////////////////d or right
+
+//////////////////d or right
+	if(win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'p' 
 		|| d == 'c')) 
 	{
 		player_count ++;
@@ -44,7 +46,9 @@ int key(int key, t_data *data)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 		
 	}
-	if(win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'p' /////////////// a or left
+
+	/////////////// a or left
+	if(win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'p' 
 		|| a == 'c' )) 
 	{
 		player_count ++;
@@ -62,7 +66,9 @@ int key(int key, t_data *data)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player_left,data->whith, data->high);
 		
 	}
-	if(win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'p' /////////// w or up
+
+	/////////// w or up
+	if(win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'p' 
 		|| w == 'c' )) 
 	{
 		player_count ++;
@@ -79,7 +85,9 @@ int key(int key, t_data *data)
 		data->high -= 80;
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
 	}
-	if(win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p' //////////// s or down
+
+	 //////////// s or down
+	if(win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p'
 		|| s == 'c'))
 	{
 		player_count ++;
