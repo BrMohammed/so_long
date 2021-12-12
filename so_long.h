@@ -12,6 +12,7 @@
 
 typedef struct s_data
 {
+	int win;
 	void	*hole;
 	char	*hole_path;
 
@@ -65,7 +66,7 @@ typedef struct s_data
 }	t_data;
 
 char	**ft_split(char *s, char c);
-void move(int win,t_data *data,char v , int y ,int x);
+void move(t_data *data,char v , int y ,int x);
 void error_game(t_data *data);
 void respone(t_data *data);
 void respone_obj(t_data *data);

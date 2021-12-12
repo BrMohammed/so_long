@@ -8,7 +8,7 @@ void mouve_to_c(char v,t_data *data,int y,int x)
 		w *= -1;
 		z *= -1;
 	}
-    if(v == 'c' )
+    if(v == 'c')
 	{
 		data->result[(data->high / 80) + y][(data->whith /80) + x] = '0';
 		if(x == -1 || x == 1)
@@ -26,7 +26,7 @@ void mouve_to_c(char v,t_data *data,int y,int x)
 		data->coin_point--;
 	}
 }
-void move(int win,t_data *data,char v , int y ,int x)
+void move(t_data *data,char v , int y ,int x)
 {
 	int w = 80;
 	int z = -80;
@@ -53,5 +53,11 @@ void move(int win,t_data *data,char v , int y ,int x)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player_left,data->whith, data->high);
 		else
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+	}
+	if (v == 'a')
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,data->whith, data->high);
+		data->win = 1;
 	}
 }
