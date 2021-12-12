@@ -36,24 +36,8 @@ int key(int key, t_data *data)
 
 int main(int ac, char **av)
 {
-	//void *mlx;
-	//void *mlx_win;
     t_data	data;
-	void *walls;
-	
-    data.player_path = "./assets/idle01.xpm";
-	char	*walls_path = "./assets/green.xpm";
-	data.plat_path = "./assets/water.xpm";
-	data.coin_path = "./assets/coin.xpm";
-	data.door_cloce_path = "./assets/closedoor.xpm";
-	data.door_open_path = "./assets/opendoor.xpm";
-	data.player_left_path = "./assets/Idle_left.xpm";
-
-    int		img_width = 80;
-	int		img_height = 80;
 	int temp ;
-
-	//////////////////
 	int fd;
 	char *bufer;
 	int error = 1;
@@ -66,22 +50,11 @@ int main(int ac, char **av)
 		bufer[error] = '\0';
 	}
 	data.result = ft_split(bufer,'\n');
-	int x = 0;
-	int y = 0;
-	while(data.result[y] != '\0')
-	{
-		while(data.result[0][x] != '\0')
-			x++;
-		y++;
-		
-	}
-
-	///////////////////  error  \\\\\\\\\\\\\\\\\\\\\\
-	
+	respone(&data);
 	error_game(&data);
 	
 	////////////////////
-	fd = 0;
+	
 	int whith = 0;
 	int high = 0;
 	int more = 0;
@@ -89,25 +62,12 @@ int main(int ac, char **av)
 	int player_cont = 0;
 	int door_cont = 0;
 	
-
-
-	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx,x*80,y*80,"so_long");
-
-
-	walls = mlx_xpm_file_to_image(data.mlx, walls_path, &img_width, &img_height);
-	data.plat = mlx_xpm_file_to_image(data.mlx, data.plat_path, &img_width, &img_height);
-	data.player = mlx_xpm_file_to_image(data.mlx, data.player_path, &img_width, &img_height);
-	data.coin = mlx_xpm_file_to_image(data.mlx, data.coin_path, &img_width, &img_height);
-	data.door_close = mlx_xpm_file_to_image(data.mlx, data.door_cloce_path, &img_width, &img_height);
-	data.door_open = mlx_xpm_file_to_image(data.mlx, data.door_open_path, &img_width, &img_height);
-	data.player_left = mlx_xpm_file_to_image(data.mlx, data.player_left_path, &img_width, &img_height);
 	while(bufer[fd] != '\0')
 	{
 
 		if(bufer[fd] == '1')
 		{
-			mlx_put_image_to_window(data.mlx, data.mlx_win, walls, whith, high);
+			mlx_put_image_to_window(data.mlx, data.mlx_win, data.walls, whith, high);
 			whith += 80;
 		}
 		else if(bufer[fd] == '0' || bufer[fd] == 'p' || bufer[fd] == 'c' || bufer[fd] == 'e')
@@ -140,7 +100,6 @@ int main(int ac, char **av)
 		{
 			high += 80;
 			whith = 0;
-			//printf("%d\n",high);
 		}
 	}
 	if (coin_cont < 1 || player_cont != 1 || door_cont != 1)
@@ -149,11 +108,6 @@ int main(int ac, char **av)
 		exit(0);
 	}
 	mlx_key_hook(data.mlx_win,&key,&data);
-   //img.img = mlx_new_image(mlx, 1920, 1080);
-
-    //img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-
-	
     mlx_loop(data.mlx);
 	free(data.mlx);
 }

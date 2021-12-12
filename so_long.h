@@ -21,7 +21,8 @@ typedef struct s_data
 	void *player_left;
 	char	*player_left_path;
 
-
+	char	*walls_path;
+	void *walls;
 	int high;
 	int whith;
 	
@@ -44,11 +45,14 @@ typedef struct s_data
 	int coin_point ;
 	int player_count ;
 
+	int		img_width;
+	int		img_height;
 
 }	t_data;
 
 char	**ft_split(char *s, char c);
 void move(int win,t_data *data,char v , int y ,int x);
 void error_game(t_data *data);
+void respone(t_data *data);
 
 #endif

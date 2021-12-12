@@ -30,6 +30,8 @@ void move(int win,t_data *data,char v , int y ,int x)
 {
 	int w = 80;
 	int z = -80;
+	int img_width = 80;
+	int img_height = 80;
 	data->player_count ++;
 	printf("%d\n",data->player_count);
 	if(v =='e' && data->coin_point == 0)
