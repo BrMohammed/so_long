@@ -8,7 +8,7 @@ void mouve_to_c(char v,t_data *data,int y,int x)
 		w *= -1;
 		z *= -1;
 	}
-    if(v == 'c' && data->coin_point != 0)
+    if(v == 'c' )
 	{
 		data->result[(data->high / 80) + y][(data->whith /80) + x] = '0';
 		if(x == -1 || x == 1)
@@ -34,7 +34,7 @@ void move(int win,t_data *data,char v , int y ,int x)
 	int img_height = 80;
 	data->player_count ++;
 	printf("%d\n",data->player_count);
-	if(v =='e' && data->coin_point == 0)
+	if(v == 'e' && data->coin_point == 0)
 		exit(0);
 	if (x == -1 || y == -1)
 	{

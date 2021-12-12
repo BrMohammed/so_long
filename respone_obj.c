@@ -16,6 +16,10 @@ void condetion(t_data *data, int *fd , int *whith, int *high)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->coin, *whith, *high);
 		data->coin_point++;
 	}
+	if(data->bufer[*fd] == 'a')
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole, *whith, *high);
+	}
 	if(data->bufer[*fd] == 'e')
 	{
 		data->door_cont++;
@@ -35,6 +39,7 @@ void respone_obj(t_data *data)
     fd = 0;
     whith = 0;
     high = 0;
+	data->coin_point = 0;
 	while(data->bufer[fd] != '\0')
 	{
 		if(data->bufer[fd] == '1')
@@ -42,7 +47,7 @@ void respone_obj(t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls, whith, high);
 			whith += 80;
 		}
-		else if(data->bufer[fd] == '0' || data->bufer[fd] == 'p' || data->bufer[fd] == 'c' || data->bufer[fd] == 'e')
+		else if(data->bufer[fd] == '0' || data->bufer[fd] == 'p' || data->bufer[fd] == 'c' || data->bufer[fd] == 'e' || data->bufer[fd] == 'a')
 		{
 			condetion(data,&fd,&whith,&high);
 		}

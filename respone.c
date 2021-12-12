@@ -17,6 +17,9 @@ void respone(t_data *data)
 	data->door_cloce_path = "./assets/closedoor.xpm";
 	data->door_open_path = "./assets/opendoor.xpm";
 	data->player_left_path = "./assets/Idle_left.xpm";
+    data->dead_path = "./assets/dead.xpm";
+    data->hole_path = "./assets/hole.xpm";
+
     data->mlx = mlx_init();
     data->mlx_win = mlx_new_window(data->mlx,x*80,y*80,"so_long");
     data->walls = mlx_xpm_file_to_image(data->mlx, data->walls_path, &data->img_width, &data->img_height);
@@ -26,4 +29,9 @@ void respone(t_data *data)
     data->door_close = mlx_xpm_file_to_image(data->mlx, data->door_cloce_path, &data->img_width, &data->img_height);
     data->door_open = mlx_xpm_file_to_image(data->mlx, data->door_open_path, &data->img_width, &data->img_height);
     data->player_left = mlx_xpm_file_to_image(data->mlx, data->player_left_path, &data->img_width, &data->img_height);
+    data->dead = mlx_xpm_file_to_image(data->mlx, data->dead_path, &data->img_width, &data->img_height);
+    data->hole = mlx_xpm_file_to_image(data->mlx, data->hole_path, &data->img_width, &data->img_height);
+    
+
+
 }

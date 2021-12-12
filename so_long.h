@@ -12,6 +12,12 @@
 
 typedef struct s_data
 {
+	void	*hole;
+	char	*hole_path;
+
+	void	*dead;
+	char	*dead_path;
+
 	void	*mlx;
 	void	*mlx_win;
 
@@ -53,6 +59,8 @@ typedef struct s_data
 	int coin_cont ;
 	int player_cont ;
 	int door_cont ;
+
+	
 
 }	t_data;
 
