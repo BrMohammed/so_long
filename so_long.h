@@ -49,5 +49,6 @@ typedef struct s_data
 
 char	**ft_split(char *s, char c);
 void move(int win,t_data *data,char v , int y ,int x);
+void error_game(t_data *data);
 
 #endif

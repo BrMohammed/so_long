@@ -32,58 +32,7 @@ int key(int key, t_data *data)
 	return (0);
 }
 
-void error_game(t_data data)
-{
-	int i = 0;
-	int len = 0;
-	int lenth_temp =0;
-	int lenth =0;
-	while (data.result[i])
-	{
-		len = 0;
-		while(data.result[i][len])
-		{
-			if(data.result[0][len]== '0')
-			{
-				printf("%s\n","ERROR");
-				exit(0);
-			}
-			if(data.result[i][0]== '0')
-			{
-				printf("%s\n","ERROR");
-				exit(0);
-			}
-			len++;
-		}
-		len--;
-		if(data.result[0][len])
-		{
-			lenth_temp = len;
-		}
-		if(lenth_temp != len)
-		{
-			printf("%s\n","ERROR");
-			exit(0);
-		}
-		if(data.result[i][len]== '0')
-			{
-				printf("%s\n","ERROR");
-				exit(0);
-			}
-		i++;
-	}
-	i--;
-	len = 0;
-	while(data.result[i][len])
-	{
-		if(data.result[i][len]== '0')
-		{
-			printf("%s\n","ERROR");
-			exit(0);
-		}
-		len++;
-	}
-}
+
 
 int main(int ac, char **av)
 {
@@ -92,8 +41,6 @@ int main(int ac, char **av)
     t_data	data;
 	void *walls;
 	
-
-
     data.player_path = "./assets/idle01.xpm";
 	char	*walls_path = "./assets/green.xpm";
 	data.plat_path = "./assets/water.xpm";
@@ -131,10 +78,7 @@ int main(int ac, char **av)
 
 	///////////////////  error  \\\\\\\\\\\\\\\\\\\\\\
 	
-	error_game(data);
-
-
-	///////////////////  error  \\\\\\\\\\\\\\\\\\\\\\
+	error_game(&data);
 	
 	////////////////////
 	fd = 0;
@@ -160,7 +104,7 @@ int main(int ac, char **av)
 	data.player_left = mlx_xpm_file_to_image(data.mlx, data.player_left_path, &img_width, &img_height);
 	while(bufer[fd] != '\0')
 	{
-		
+
 		if(bufer[fd] == '1')
 		{
 			mlx_put_image_to_window(data.mlx, data.mlx_win, walls, whith, high);
@@ -199,9 +143,9 @@ int main(int ac, char **av)
 			//printf("%d\n",high);
 		}
 	}
-	if(coin_cont < 1 || player_cont != 1|| door_cont != 1)
+	if (coin_cont < 1 || player_cont != 1 || door_cont != 1)
 	{
-		printf("%s\n","ERROR");
+		printf("%s\n", "ERROR");
 		exit(0);
 	}
 	mlx_key_hook(data.mlx_win,&key,&data);
