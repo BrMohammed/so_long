@@ -32,7 +32,6 @@ void error_game(t_data *data)
 	while (data->result[i])
 	{
 		len = 0;
-		
         error_while(data,i,len,lenth_temp);
 		i++;
 	}
@@ -46,5 +45,10 @@ void error_game(t_data *data)
 			exit(0);
 		}
 		len++;
+	}
+	if (data->coin_cont < 1 || data->player_cont != 1 || data->door_cont != 1)
+	{
+		printf("%s\n", "ERROR");
+		exit(0);
 	}
 }

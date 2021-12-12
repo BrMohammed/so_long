@@ -48,9 +48,8 @@ int main(int ac, char **av)
 	}
 	data.result = ft_split(data.bufer,'\n');
 	respone(&data);
-	error_game(&data);
 	respone_obj(&data);
-
+	error_game(&data);
 	mlx_key_hook(data.mlx_win,&key,&data);
     mlx_loop(data.mlx);
 	free(data.mlx);
