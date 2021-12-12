@@ -48,11 +48,18 @@ typedef struct s_data
 	int		img_width;
 	int		img_height;
 
+	char *bufer;
+
+	int coin_cont ;
+	int player_cont ;
+	int door_cont ;
+
 }	t_data;
 
 char	**ft_split(char *s, char c);
 void move(int win,t_data *data,char v , int y ,int x);
 void error_game(t_data *data);
 void respone(t_data *data);
+void respone_obj(t_data *data);
 
 #endif
