@@ -1,4 +1,4 @@
-mlx = gcc -lmlx -framework OpenGL -framework AppKit so_long.c ft_split.c
+mlx = gcc -lmlx -framework OpenGL -framework AppKit so_long.c ft_split.c move.c
 #  github bigin
 
 ADD = git add .

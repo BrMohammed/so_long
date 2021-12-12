@@ -41,11 +41,13 @@ typedef struct s_data
 	int door_high;
 	int door_whith;
 
-
+	int coin_point ;
+	int player_count ;
 
 
 }	t_data;
 
 char	**ft_split(char *s, char c);
+void move(int win,t_data *data,char v , int y ,int x);
 
 #endif

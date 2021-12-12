@@ -1,52 +1,5 @@
 #include "so_long.h"
 
-int coin_point = 0;
-int player_count = 0;
-
-void move(int win,t_data *data,char v , int y ,int x)
-{
-	int w = 80;
-	int z = -80;
-	player_count ++;
-	printf("%d\n",player_count);
-	if(v =='e' && coin_point == 0)
-		exit(0);
-	if (x == -1 || y == -1)
-	{
-		w *= -1;
-		z *= -1;
-	}
-	if(v == 'c' && coin_point != 0)
-	{
-		data->result[(data->high / 80) + y][(data->whith /80) + x] = '0';
-		if(x == -1 || x == 1)
-		{
-			data->whith = data->whith + w;
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
-			data->whith = data->whith + z;
-		}
-		if(y == -1 || y == 1)
-		{
-			data->high =data->high + w;
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
-			data->high =data->high + z;
-		}
-		coin_point--;
-	}
-	if(v == '0' || v == 'c' || v == 'p')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
-		if(x == -1 || x == 1)
-			data->whith =data->whith + w;
-		if(y == -1 || y == 1)
-			data->high = data->high + w;
-		if(x == -1 )
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player_left,data->whith, data->high);
-		else
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
-	}
-}
-
 int key(int key, t_data *data)
 {
 	//w=13  s=1  d=2 a=0 
@@ -60,22 +13,18 @@ int key(int key, t_data *data)
 	if (key == 53)
 		exit(0);
 ////////////////d or right
-	if(win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'p' 
-		|| d == 'c' || d == 'e')) 
+	if(win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'p' || d == 'c' || d == 'e')) 
 		move(win,data,d,0,1);
 /////////////// a or left
-	if(win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'p' 
-		|| a == 'c' || a == 'e')) 
+	if(win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'p' || a == 'c' || a == 'e')) 
 		move(win,data,a,0,-1);
 /////////////// w or up
-	if(win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'p' 
-		|| w == 'c' || w == 'e')) 
+	if(win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'p' || w == 'c' || w == 'e')) 
 		 move(win,data,w,-1,0);
 /////////////// s or down
-	if(win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p'
-		|| s == 'c'|| s == 'e'))
+	if(win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p'|| s == 'c'|| s == 'e'))
 	 	move(win,data,s,1,0);
-	if(coin_point == 0)
+	if(data->coin_point == 0)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->door_whith, data->door_high);
 		win = 1;
@@ -231,7 +180,7 @@ int main(int ac, char **av)
 			{
 				coin_cont++;
 				mlx_put_image_to_window(data.mlx, data.mlx_win, data.coin, whith, high);
-				coin_point++;
+				data.coin_point++;
 			}
 			if(bufer[fd] == 'e')
 			{
