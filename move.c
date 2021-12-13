@@ -45,6 +45,7 @@ void move(t_data *data,char v , int y ,int x)
     mouve_to_c(v,data,y,x);
 	if(v == '0' || v == 'c' || v == 'p')
 	{
+		data->result[(data->high / 80)][(data->whith /80)] = '0';
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 		if(x == -1 || x == 1)
 			data->whith = data->whith + w;
@@ -54,6 +55,7 @@ void move(t_data *data,char v , int y ,int x)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player_left,data->whith, data->high);
 		else
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,data->whith, data->high);
+			data->result[(data->high / 80)][(data->whith /80)] = 'p';
 	}
 	if (v == 'a')
 	{

@@ -1,5 +1,27 @@
 #include "so_long.h"
 
+
+void char_map(t_data *data,char temp,int *x,int *y)
+{
+	int i  = 0;
+	int t = 0;
+	while(data->result[i] != '\0')
+	{
+		while(data->result[i][t] != '\0')
+		{
+			if(data->result[i][t] == temp)
+			{
+				
+				*y = i;
+				*x = t;
+			}
+			t++;
+		}
+		t = 0;
+		i++;
+	}
+}
+
 int key(int key, t_data *data)
 {
 	//w=13  s=1  d=2 a=0 
@@ -23,9 +45,17 @@ int key(int key, t_data *data)
 /////////////// s or down
 	if(data->win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p'|| s == 'c'|| s == 'e' || s == 'a'))
 	 	move(data,s,1,0);
+	int x;
+	int y;
 	if(data->coin_point == 0)
 	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->door_whith, data->door_high);
+		int i = 0;
+		while(i < data->door_cont)
+		{
+			char_map(data,'e',&x,&y);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,x*80,y*80);
+		}
+		
 	}
 	return(0);
 }

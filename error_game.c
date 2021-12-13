@@ -46,7 +46,7 @@ void error_game(t_data *data)
 		}
 		len++;
 	}
-	if (data->coin_cont < 1 || data->player_cont != 1 || data->door_cont != 1)
+	if (data->coin_cont < 1 || data->player_cont != 1)
 	{
 		printf("%s\n", "ERROR");
 		exit(0);
