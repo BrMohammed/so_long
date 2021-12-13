@@ -1,7 +1,7 @@
 #include "so_long.h"
 
 
-void char_map(t_data *data,char temp,int *x,int *y)
+void door_open(t_data *data,char temp)
 {
 	int i  = 0;
 	int t = 0;
@@ -11,9 +11,7 @@ void char_map(t_data *data,char temp,int *x,int *y)
 		{
 			if(data->result[i][t] == temp)
 			{
-				
-				*y = i;
-				*x = t;
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,t*80,i*80);
 			}
 			t++;
 		}
@@ -45,18 +43,8 @@ int key(int key, t_data *data)
 /////////////// s or down
 	if(data->win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p'|| s == 'c'|| s == 'e' || s == 'a'))
 	 	move(data,s,1,0);
-	int x;
-	int y;
 	if(data->coin_point == 0)
-	{
-		int i = 0;
-		while(i < data->door_cont)
-		{
-			char_map(data,'e',&x,&y);
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,x*80,y*80);
-		}
-		
-	}
+		door_open(data,'e');
 	return(0);
 }
 
