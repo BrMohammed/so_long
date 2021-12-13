@@ -19,6 +19,8 @@ void condetion(t_data *data, int *fd , int *whith, int *high)
 	if(data->bufer[*fd] == 'a')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole, *whith, *high);
+		data->hole_high = *high;
+		data->hole_whith = *whith;
 	}
 	if(data->bufer[*fd] == 'e')
 	{

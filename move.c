@@ -1,4 +1,5 @@
 #include "so_long.h"
+
 void mouve_to_c(char v,t_data *data,int y,int x)
 {
     int w = 80;
@@ -46,7 +47,7 @@ void move(t_data *data,char v , int y ,int x)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,data->whith, data->high);
 		if(x == -1 || x == 1)
-			data->whith =data->whith + w;
+			data->whith = data->whith + w;
 		if(y == -1 || y == 1)
 			data->high = data->high + w;
 		if(x == -1 )

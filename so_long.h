@@ -16,6 +16,9 @@ typedef struct s_data
 	void	*hole;
 	char	*hole_path;
 
+	int hole_high;
+	int hole_whith;
+
 	void	*dead;
 	char	*dead_path;
 
@@ -61,8 +64,6 @@ typedef struct s_data
 	int player_cont ;
 	int door_cont ;
 
-	
-
 }	t_data;
 
 char	**ft_split(char *s, char c);
@@ -70,5 +71,6 @@ void move(t_data *data,char v , int y ,int x);
 void error_game(t_data *data);
 void respone(t_data *data);
 void respone_obj(t_data *data);
+int hole_move(t_data *data);
 
 #endif

@@ -27,13 +27,12 @@ int key(int key, t_data *data)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close,data->door_whith, data->door_high);
 	}
-	return (0);
+	return(0);
 }
 
 int main(int ac, char **av)
 {
     t_data	data;
-	int temp ;
 	int fd;
 	int error = 1;
 
@@ -49,6 +48,8 @@ int main(int ac, char **av)
 	respone_obj(&data);
 	error_game(&data);
 	mlx_key_hook(data.mlx_win,&key,&data);
+	mlx_loop_hook(data.mlx,&hole_move,&data);
     mlx_loop(data.mlx);
+	//system("leaks a.out");
 	free(data.mlx);
 }
