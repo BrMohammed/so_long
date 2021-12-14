@@ -27,7 +27,7 @@ void mouve_to_c(char v,t_data *data,int y,int x)
 		data->coin_point--;
 	}
 }
-static void condetion(t_data *data, int *t,char *c,int *i)
+static void condetion_number(t_data *data, int *t,char *c,int *i)
 {
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,*t,0);
 		if(c[*i] == '0')
@@ -51,7 +51,7 @@ static void condetion(t_data *data, int *t,char *c,int *i)
 		if(c[*i] == '9')
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number9,*t,0);
 }
-void move_show(t_data *data)
+void move_show_count(t_data *data)
 {
 	char *c;
 	int i;
@@ -62,7 +62,7 @@ void move_show(t_data *data)
 	c = ft_itoa(data->player_count);
 	while(c[i] != '\0')
 	{
-		condetion(data,&t,c,&i);
+		condetion_number(data,&t,c,&i);
 		t += 40;
 		i++;
 	}
@@ -75,7 +75,7 @@ void move(t_data *data,char v , int y ,int x)
 	int img_width = 80;
 	int img_height = 80;
 	data->player_count ++;
-	move_show(data);
+	move_show_count(data);
 	printf("%d\n",data->player_count);
 	if(v == 'E' && data->coin_point == 0)
 		exit(0);
