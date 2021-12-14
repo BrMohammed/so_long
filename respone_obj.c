@@ -3,26 +3,26 @@
 void condetion(t_data *data, int *fd , int *whith, int *high)
 {
     mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat, *whith, *high);
-	if(data->bufer[*fd] == 'p')
+	if(data->bufer[*fd] == 'P')
 	{
 		data->player_cont++;
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, *whith, *high);
 		data->high = *high;
 		data->whith = *whith;
 	}
-	if(data->bufer[*fd] == 'c')
+	if(data->bufer[*fd] == 'C')
 	{
 		data->coin_cont++;
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->coin, *whith, *high);
 		data->coin_point++;
 	}
-	if(data->bufer[*fd] == 'a')
+	if(data->bufer[*fd] == 'A')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole, *whith, *high);
 		data->hole_high = *high;
 		data->hole_whith = *whith;
 	}
-	if(data->bufer[*fd] == 'e')
+	if(data->bufer[*fd] == 'E')
 	{
 		data->door_cont++;
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_open, *whith, *high);
@@ -49,7 +49,7 @@ void respone_obj(t_data *data)
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls, whith, high);
 			whith += 80;
 		}
-		else if(data->bufer[fd] == '0' || data->bufer[fd] == 'p' || data->bufer[fd] == 'c' || data->bufer[fd] == 'e' || data->bufer[fd] == 'a')
+		else if(data->bufer[fd] == '0' || data->bufer[fd] == 'P' || data->bufer[fd] == 'C' || data->bufer[fd] == 'E' || data->bufer[fd] == 'A')
 		{
 			condetion(data,&fd,&whith,&high);
 		}

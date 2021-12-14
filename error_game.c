@@ -26,8 +26,8 @@ void error_game(t_data *data)
 {
 	int i = 0;
 	int len = 0;
-	int lenth_temp =0;
-	int lenth =0;
+	int lenth_temp = 0;
+	int lenth = 0;
 
 	while (data->result[i])
 	{
@@ -39,7 +39,7 @@ void error_game(t_data *data)
 	len = 0;
 	while(data->result[i][len])
 	{
-		if(data->result[i][len]== '0')
+		if(data->result[i][len] == '0')
 		{
 			printf("%s\n","ERROR");
 			exit(0);

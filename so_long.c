@@ -32,19 +32,19 @@ int key(int key, t_data *data)
 	if (key == 53)
 		exit(0);
 ////////////////d or right
-	if(data->win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'p' || d == 'c' || d == 'e' || d == 'a')) 
+	if(data->win == 0 && (key == 2 || key == 124) && (d == '0' || d == 'P' || d == 'C' || d == 'E' || d == 'A')) 
 		move(data,d,0,1);
 /////////////// a or left
-	if(data->win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'p' || a == 'c' || a == 'e' || a == 'a')) 
+	if(data->win == 0 && (key == 0 || key == 123) && (a == '0' || a == 'P' || a == 'C' || a == 'E' || a == 'A')) 
 		move(data,a,0,-1);
 /////////////// w or up
-	if(data->win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'p' || w == 'c' || w == 'e' || w == 'a')) 
+	if(data->win == 0 && (key == 13 || key == 126) && (w == '0' || w == 'P' || w == 'C' || w == 'E' || w == 'A')) 
 		 move(data,w,-1,0);
 /////////////// s or down
-	if(data->win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'p'|| s == 'c'|| s == 'e' || s == 'a'))
+	if(data->win == 0 && (key == 1 || key == 125) && (s == '0' || s == 'P'|| s == 'C'|| s == 'E' || s == 'A'))
 	 	move(data,s,1,0);
 	if(data->coin_point == 0)
-		door_open(data,'e');
+		door_open(data,'E');
 	return(0);
 }
 
