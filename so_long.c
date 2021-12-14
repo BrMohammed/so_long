@@ -52,14 +52,20 @@ int main(int ac, char **av)
 {
     t_data	data;
 	int fd;
-	int error = 1;
+	int error;
 
+	error = 1;
 	data.bufer = malloc(1000);
 	if(ac == 2)
 	{
 		fd = open(av[1],O_RDONLY);
 		error = read(fd,data.bufer,1000);
 		data.bufer[error] = '\0';
+	}
+	if(ac == 1 || ac > 2 || error <= 0)
+	{
+		printf("%s\n","ERROR");
+		exit(0);
 	}
 	data.result = ft_split(data.bufer,'\n');
 	respone(&data);

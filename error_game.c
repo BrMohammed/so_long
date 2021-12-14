@@ -4,12 +4,19 @@ void error_while(t_data *data,int i,int len,int lenth_temp)
 {
     while(data->result[i][len])
 	{
-		if(data->result[0][len]== '0' || data->result[i][0]== '0')
+		if(data->result[0][len] == '0' || data->result[i][0] == '0')
+		{
+			printf("%s\n","ERROR");
+			exit(0);
+		}
+		if(data->result[i][len] != 'E' && data->result[i][len] != 'A' && data->result[i][len] != 'C' 
+		&& data->result[i][len] != '1' && data->result[i][len] != 'P' && data->result[i][len] != '0') 
 		{
 			printf("%s\n","ERROR");
 			exit(0);
 		}
 		len++;
+		
 	}
 	len--;
 	if(data->result[0][len])
