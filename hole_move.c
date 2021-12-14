@@ -23,13 +23,41 @@ void hole_b(t_data *data , char v,int *x ,int *y,int move)
     }
 }
 
+void conditions(t_data *data,int *x,int *y)
+{
+    static int temp;
+    char d = data->result[*y][*x + 1];
+	char w = data->result[*y - 1][*x];
+	char a = data->result[*y][*x - 1];
+	char s = data->result[*y + 1][*x]; 
+    char t = data->result[*y][*x];
+
+    if(w == '1' || w == 'c' || w == 'e' || w == 'a')
+        temp = 1;
+    if(s == '1'|| s == 'c' || s == 'e' || s == 'a')
+        temp = 0;
+    if(a == '1' || a == 'c' || a == 'e' || a == 'a')
+        temp = 2;
+    if(d == '1' || d == 'c' || d == 'e' || d == 'a')
+        temp = 3;                 
+    if ((s == '0' && temp == 1) || (s == 'p' && temp == 1) )
+        hole_b(data,s,x,y,1);
+    if ((w == '0' && temp == 0) || (w == 'p' && temp == 0))
+        hole_b(data,w,x,y,2);
+    if ((a == '0' && temp == 3) || (a == 'p' && temp == 3))
+        hole_b(data,a,x,y,3);
+    if ((d == '0' && temp == 2) || (d == 'p' && temp == 2))
+        hole_b(data,d,x,y,4);
+}
 
 int hole_move(t_data *data)
 {
     static int i;
-    static int temp;
-    int x = 0;
-    int y = 0;
+    int x ;
+    int y ;
+
+    x = 0;
+    y = 0;
     if(i == 5000 && data->win != 1)
     {
         while(data->result[y] != '\0')
@@ -38,36 +66,7 @@ int hole_move(t_data *data)
 		    {
 			    if(data->result[y][x] == 'a')
 			    {
-				    char d = data->result[y][x + 1];
-	                char w = data->result[y - 1][x];
-	                char a = data->result[y][x - 1];
-	                char s = data->result[y + 1][x]; 
-                    char t = data->result[y][x];
-
-                    if(w == '1' || w == 'c' || w == 'e' || w == 'a')
-                        temp = 1;
-                    if(s == '1'|| s == 'c' || s == 'e' || s == 'a')
-                        temp = 0;
-                    if(a == '1' || a == 'c' || a == 'e' || a == 'a')
-                        temp = 2;
-                    if(d == '1' || d == 'c' || d == 'e' || d == 'a')
-                        temp = 3;
-                    if ((s == '0' && temp == 1) || (s == 'p' && temp == 1) )
-	                {
-                       hole_b(data,s,&x,&y,1);
-	                }
-                    if ((w == '0' && temp == 0) || (w == 'p' && temp == 0))
-	                {
-                        hole_b(data,s,&x,&y,2);
-                    }
-                    if ((a == '0' && temp == 3) || (a == 'p' && temp == 3))
-	                {
-                        hole_b(data,s,&x,&y,3);
-	                }
-                    if ((d == '0' && temp == 2) || (d == 'p' && temp == 2))
-	                {
-                        hole_b(data,s,&x,&y,4);
-                    }
+                    conditions(data,&x,&y);
                 }
                 x++;
 			}
