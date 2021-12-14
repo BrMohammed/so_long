@@ -26,11 +26,15 @@ void hole_b(t_data *data , char v,int *x ,int *y,int move)
 void conditions(t_data *data,int *x,int *y)
 {
     static int temp;
-    char d = data->result[*y][*x + 1];
-	char w = data->result[*y - 1][*x];
-	char a = data->result[*y][*x - 1];
-	char s = data->result[*y + 1][*x]; 
-    char t = data->result[*y][*x];
+    char d ;
+	char w ;
+	char a ;
+	char s ; 
+
+    d = data->result[*y][*x + 1];
+    w = data->result[*y - 1][*x];
+	a = data->result[*y][*x - 1];
+	s = data->result[*y + 1][*x]; 
 
     if(w == '1' || w == 'c' || w == 'e' || w == 'a')
         temp = 1;
@@ -50,6 +54,25 @@ void conditions(t_data *data,int *x,int *y)
         hole_b(data,d,x,y,4);
 }
 
+void flower(t_data *data)
+{
+    int x  = 0;
+    int y  = 0;
+    while(data->result[y] != '\0')
+	{
+		while(data->result[y][x] != '\0')
+		{
+			if(data->result[y][x] == 'c')
+			{
+                mlx_put_image_to_window(data->mlx, data->mlx_win, data->coin1,x*80,y*80);
+            }
+            x++;
+		}
+        x = 0;
+		y++;
+	}
+}
+
 int hole_move(t_data *data)
 {
     static int i;
@@ -58,7 +81,11 @@ int hole_move(t_data *data)
 
     x = 0;
     y = 0;
-    if(i == 5000 && data->win != 1)
+    if(i == 3000)
+    {
+        flower(data);
+    }
+    if(i == 6000 && data->win != 1)
     {
         while(data->result[y] != '\0')
 	    {
@@ -68,6 +95,8 @@ int hole_move(t_data *data)
 			    {
                     conditions(data,&x,&y);
                 }
+                if(data->result[y][x] == 'c')
+                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->coin,x*80,y*80);
                 x++;
 			}
             x = 0;

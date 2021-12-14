@@ -43,6 +43,9 @@ typedef struct s_data
 	void *coin;
 	char *coin_path;
 
+	void *coin1;
+	char *coin_path1;
+
 	void *door_close;
 	char *door_cloce_path;
 
@@ -63,6 +66,7 @@ typedef struct s_data
 	int coin_cont ;
 	int player_cont ;
 	int door_cont ;
+
 
 }	t_data;
 
