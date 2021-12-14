@@ -3,8 +3,8 @@
 void path(t_data *data)
 {
     data->player_path = "./assets/idle01.xpm";
-	data->walls_path = "./assets/green.xpm";
-	data->plat_path = "./assets/water.xpm";
+	data->walls_path = "./assets/square2.xpm";
+	data->plat_path = "./assets/pack.xpm";
 	data->coin_path = "./assets/f1.xpm";
     data->coin_path1 = "./assets/f2.xpm";
 	data->door_cloce_path = "./assets/closedoor.xpm";

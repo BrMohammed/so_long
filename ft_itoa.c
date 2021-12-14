@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/14 23:19:53 by brmohamm          #+#    #+#             */
+/*   Updated: 2021/12/14 23:20:09 by brmohamm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static char	lopandcondition(int n, char *c, int i)
@@ -41,7 +53,7 @@ char	*ft_itoa(int n)
 		t /= 10;
 		i++;
 	}
-	c = (char *)malloc(sizeof(char)* (i + 1));
+	c = (char *)malloc(sizeof(char) * (i + 1));
 	if (!c)
 		return (NULL);
 	c[i] = '\0';

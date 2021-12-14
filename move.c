@@ -27,9 +27,9 @@ void mouve_to_c(char v,t_data *data,int y,int x)
 		data->coin_point--;
 	}
 }
-static void condetion_number(t_data *data, int *t,char *c,int *i)
+static void condetion_number(t_data *data, int *t,char *c,int *i,int *v)
 {
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,*t,0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,*v,0);
 		if(c[*i] == '0')
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number0,*t,0);
 		if(c[*i] == '1')
@@ -56,15 +56,18 @@ void move_show_count(t_data *data)
 	char *c;
 	int i;
 	int t;
+	int v;
 
 	i = 0;
 	t = 0;
+	v = 0;
 	c = ft_itoa(data->player_count);
 	while(c[i] != '\0')
 	{
-		condetion_number(data,&t,c,&i);
+		condetion_number(data,&t,c,&i,&v);
 		t += 40;
 		i++;
+		v+= 80;
 	}
 	free(c);
 }

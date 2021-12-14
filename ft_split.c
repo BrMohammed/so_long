@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/14 23:20:16 by brmohamm          #+#    #+#             */
+/*   Updated: 2021/12/14 23:20:21 by brmohamm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	countpart_lop(char const *s, char c)
@@ -117,4 +129,3 @@ char	**ft_split(char *s, char c)
 	contaner_lop(s, c, c1, countpart);
 	return (c1);
 }
-
