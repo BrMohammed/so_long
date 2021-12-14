@@ -1,5 +1,29 @@
 # include "so_long.h"
 
+void hole_b(t_data *data , char v,int *x ,int *y,int move)
+{
+    mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,*x*80,*y*80);
+    data->result[*y][*x] = '0';
+    if(move == 1)
+        *y += 1;
+    if(move == 2)
+        *y -= 1;
+    if(move == 3)
+        *x -= 1;
+    if(move == 4)
+        *x += 1;
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,*x*80,*y*80);
+    data->result[*y][*x] = 'a';
+    if(v == 'p')
+    {
+        mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,*x*80,*y*80);
+        mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,*x*80,*y*80);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,*x*80,*y*80);
+        data->win = 1;
+    }
+}
+
+
 int hole_move(t_data *data)
 {
     static int i;
@@ -28,68 +52,21 @@ int hole_move(t_data *data)
                         temp = 2;
                     if(d == '1' || d == 'c' || d == 'e' || d == 'a')
                         temp = 3;
-
                     if ((s == '0' && temp == 1) || (s == 'p' && temp == 1) )
 	                {
-                        mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                        data->result[y][x] = '0';
-                        y += 1;
-	                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-                        data->result[y][x] = 'a';
-                        if(s == 'p')
-                        {
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-		                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,x*80,y*80);
-                            data->win = 1;
-                        }
+                       hole_b(data,s,&x,&y,1);
 	                }
                     if ((w == '0' && temp == 0) || (w == 'p' && temp == 0))
 	                {
-            
-                        mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                        data->result[y][x] = '0';
-                        y -= 1;
-	                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-                        data->result[y][x] = 'a';
-                        if(s == 'p')
-                        {
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-		                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,x*80,y*80);
-                            data->win = 1;
-                        }
+                        hole_b(data,s,&x,&y,2);
                     }
                     if ((a == '0' && temp == 3) || (a == 'p' && temp == 3))
 	                {
-                        mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                        data->result[y][x] = '0';
-                        x -= 1;
-	                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-                        data->result[y][x] = 'a';
-                        if(s == 'p')
-                        {
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-		                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,x*80,y*80);
-                            data->win = 1;
-                        }
+                        hole_b(data,s,&x,&y,3);
 	                }
                     if ((d == '0' && temp == 2) || (d == 'p' && temp == 2))
 	                {
-            
-                        mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                        data->result[y][x] = '0';
-                        x += 1;
-	                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-                        data->result[y][x] = 'a';
-                        if(s == 'p')
-                        {
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,x*80,y*80);
-                            mlx_put_image_to_window(data->mlx, data->mlx_win, data->hole,x*80,y*80);
-		                    mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,x*80,y*80);
-                            data->win = 1;
-                        }
+                        hole_b(data,s,&x,&y,4);
                     }
                 }
                 x++;
