@@ -63,7 +63,7 @@ void move_show(t_data *data)
 	while(c[i] != '\0')
 	{
 		condetion(data,&t,c,&i);
-		t += 80;
+		t += 40;
 		i++;
 	}
 	free(c);
