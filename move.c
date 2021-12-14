@@ -27,6 +27,73 @@ void mouve_to_c(char v,t_data *data,int y,int x)
 		data->coin_point--;
 	}
 }
+void move_show(t_data *data)
+{
+	char *c;
+	int i;
+	int t;
+
+	i = 0;
+	t = 0;
+
+	c = ft_itoa(data->player_count);
+	while(c[i] != '\0')
+	{
+		if(c[i] == '0')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number0,t,0);
+		}
+		if(c[i] == '1')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number1,t,0);
+		}
+		if(c[i] == '2')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number2,t,0);
+		}
+		if(c[i] == '3')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number3,t,0);
+		}
+		if(c[i] == '4')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number4,t,0);
+		}
+		if(c[i] == '5')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number5,t,0);
+		}
+		if(c[i] == '6')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number6,t,0);
+		}
+		if(c[i] == '7')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number7,t,0);
+		}
+		if(c[i] == '8')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number8,t,0);
+		}
+		if(c[i] == '9')
+		{
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls,t,0);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->number.number9,t,0);
+		}
+		i++;
+		t += 80;
+	}
+		
+}
 void move(t_data *data,char v , int y ,int x)
 {
 	int w = 80;
@@ -34,6 +101,7 @@ void move(t_data *data,char v , int y ,int x)
 	int img_width = 80;
 	int img_height = 80;
 	data->player_count ++;
+	move_show(data);
 	printf("%d\n",data->player_count);
 	if(v == 'E' && data->coin_point == 0)
 		exit(0);

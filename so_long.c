@@ -20,6 +20,11 @@ void door_open(t_data *data,char temp)
 	}
 }
 
+int mouse(int key, t_data *data)
+{
+	exit(0);
+	return(0);
+}
 int key(int key, t_data *data)
 {
 	//w=13  s=1  d=2 a=0 
@@ -61,6 +66,7 @@ int main(int ac, char **av)
 		fd = open(av[1],O_RDONLY);
 		error = read(fd,data.bufer,1000);
 		data.bufer[error] = '\0';
+		close(fd);
 	}
 	if(ac == 1 || ac > 2 || error <= 0)
 	{
@@ -72,6 +78,7 @@ int main(int ac, char **av)
 	respone_obj(&data);
 	error_game(&data);
 	mlx_key_hook(data.mlx_win,&key,&data);
+	mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
 	mlx_loop_hook(data.mlx,&hole_move,&data);
     mlx_loop(data.mlx);
 	//system("leaks a.out");
