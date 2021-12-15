@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 01:23:04 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 02:37:51 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	door_open(t_data *data, char temp)
 	}
 }
 
-int	mouse(int key, t_data *data)
+int	mouse(void)
 {
 	exit(0);
 	return (0);
@@ -94,5 +94,6 @@ int	main(int ac, char **av)
 	mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
 	mlx_loop_hook(data.mlx, &hole_move, &data);
 	mlx_loop(data.mlx);
+	system("leaks so_long.a");
 	free(data.mlx);
 }
