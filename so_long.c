@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 15:24:18 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:29:20 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ int	main(int ac, char **av)
 	int		fd;
 	int		error;
 
-	check(av[1]);
+	if (av[1])
+		check(av[1]);
 	error = 1;
 	data.bufer = malloc(1000);
 	if (ac == 2)
