@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 02:37:51 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 02:48:04 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,29 +71,51 @@ int	key(int key, t_data *data)
 	return (0);
 }
 
+int check(char *str)
+{
+	int i = 0;
+	while(str[i])
+	{
+		if(str[i] == '.')
+			return(1);
+			i++;
+	}
+	return(0);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 	int		fd;
 	int		error;
 
+	if(!check(av[1]))
+	{
+		printf("error\n");
+		return(0);
+	}
 	error = 1;
 	data.bufer = malloc(1000);
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
+		if(fd == -1)
+		{
+			printf("ERROR\n");
+			return(0);
+		}
 		error = read(fd, data.bufer, 1000);
 		data.bufer[error] = '\0';
 		close(fd);
+		data.result = ft_split(data.bufer, '\n');
+		respone(&data);
+		respone_obj(&data);
+		error_game(&data, error, ac);
+		mlx_key_hook(data.mlx_win, &key, &data);
+		mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
+		mlx_loop_hook(data.mlx, &hole_move, &data);
+		mlx_loop(data.mlx);
+		free(data.mlx);
 	}
-	data.result = ft_split(data.bufer, '\n');
-	respone(&data);
-	respone_obj(&data);
-	error_game(&data, error, ac);
-	mlx_key_hook(data.mlx_win, &key, &data);
-	mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
-	mlx_loop_hook(data.mlx, &hole_move, &data);
-	mlx_loop(data.mlx);
-	system("leaks so_long.a");
-	free(data.mlx);
+	return (0);
 }
