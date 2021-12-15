@@ -6,23 +6,16 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:31:36 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 15:23:30 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:22:18 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	print_error(void)
-{
-	printf("%s\n", "ERROR");
-	exit(0);
-}
-
 static void	condetion_double(t_data *data, int *fd, int *whith, int *high)
 {
 	if (data->bufer[*fd] == 'P')
 	{
-		data->player_cont++;
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 			data->player, *whith, *high);
 		data->high = *high;
@@ -30,7 +23,6 @@ static void	condetion_double(t_data *data, int *fd, int *whith, int *high)
 	}
 	if (data->bufer[*fd] == 'C')
 	{
-		data->coin_cont++;
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 			data->coin, *whith, *high);
 		data->coin_point++;
@@ -51,7 +43,6 @@ void	condetion(t_data *data, int *fd, int *whith, int *high)
 	condetion_double(data, fd, whith, high);
 	if (data->bufer[*fd] == 'E')
 	{
-		data->door_cont++;
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 			data->door_open, *whith, *high);
 		data->door_high = *high;
@@ -94,6 +85,4 @@ void	respone_obj(t_data *data)
 		fd++;
 		condetion42(data, fd, &high, &whith);
 	}
-	if (data->coin_cont < 1 || data->player_cont != 1 || data->door_cont < 1)
-		print_error();
 }

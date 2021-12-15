@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:19:04 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 14:54:41 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:21:07 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,6 @@ typedef struct s_data
 
 	char		*bufer;
 
-	int			coin_cont ;
-	int			player_cont ;
-	int			door_cont ;
 	t_number	number;
 
 }	t_data;
