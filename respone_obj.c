@@ -6,16 +6,14 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:31:36 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 00:34:43 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 01:59:06 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	condetion(t_data *data, int *fd, int *whith, int *high)
+static void	condetion_double(t_data *data, int *fd, int *whith, int *high)
 {
-	mlx_put_image_to_window(data->mlx, data->mlx_win,
-		data->plat, *whith, *high);
 	if (data->bufer[*fd] == 'P')
 	{
 		data->player_cont++;
@@ -38,6 +36,13 @@ void	condetion(t_data *data, int *fd, int *whith, int *high)
 		data->hole_high = *high;
 		data->hole_whith = *whith;
 	}
+}
+
+void	condetion(t_data *data, int *fd, int *whith, int *high)
+{
+	mlx_put_image_to_window(data->mlx, data->mlx_win,
+		data->plat, *whith, *high);
+	condetion_double(data, fd, whith, high);
 	if (data->bufer[*fd] == 'E')
 	{
 		data->door_cont++;
@@ -47,6 +52,15 @@ void	condetion(t_data *data, int *fd, int *whith, int *high)
 		data->door_whith = *whith;
 	}
 	*whith += 80;
+}
+
+static void	condetion42(t_data *data, int fd, int *high, int *whith)
+{
+	if (data->bufer[fd] == '\n')
+	{
+		*high += 80;
+		*whith = 0;
+	}
 }
 
 void	respone_obj(t_data *data)
@@ -72,10 +86,6 @@ void	respone_obj(t_data *data)
 			||data->bufer[fd] == 'E' || data->bufer[fd] == 'A')
 			condetion(data, &fd, &whith, &high);
 		fd++;
-		if (data->bufer[fd] == '\n')
-		{
-			high += 80;
-			whith = 0;
-		}
+		condetion42(data, fd, &high, &whith);
 	}
 }
