@@ -6,44 +6,11 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:22:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 01:17:01 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 01:46:09 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	mouve_to_c(char v, t_data *data, int y, int x)
-{
-	int	w;
-	int	z;
-
-	w = 80;
-	z = -80;
-	if (x == -1 || y == -1)
-	{
-		w *= -1;
-		z *= -1;
-	}
-	if (v == 'C')
-	{
-		data->result[(data->high / 80) + y][(data->whith / 80) + x] = '0';
-		if (x == -1 || x == 1)
-		{
-			data->whith = data->whith + w;
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,
-				data->whith, data->high);
-			data->whith = data->whith + z;
-		}
-		if (y == -1 || y == 1)
-		{
-			data->high = data->high + w;
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,
-				data->whith, data->high);
-			data->high = data->high + z;
-		}
-		data->coin_point--;
-	}
-}
 
 static void	condetion_number(t_data *data, int *t, char *c, int *i)
 {
@@ -101,28 +68,13 @@ void	move_show_count(t_data *data)
 	free(c);
 }
 
-void	move(t_data *data, char v, int y, int x)
+static void	condetion42(char v, t_data *data, int y, int x)
 {
 	int	w;
-	int	z;
-	int	img_width;
-	int	img_height;
 
 	w = 80;
-	z = -80;
-	img_width = 80;
-	img_height = 80;
-	data->player_count ++;
-	move_show_count(data);
-	printf("%d\n", data->player_count);
-	if (v == 'E' && data->coin_point == 0)
-		exit(0);
 	if (x == -1 || y == -1)
-	{
 		w *= -1;
-		z *= -1;
-	}
-	mouve_to_c(v, data, y, x);
 	if (v == '0' || v == 'C' || v == 'P')
 	{
 		data->result[(data->high / 80)][(data->whith / 80)] = '0';
@@ -140,6 +92,22 @@ void	move(t_data *data, char v, int y, int x)
 				data->player, data->whith, data->high);
 			data->result[(data->high / 80)][(data->whith / 80)] = 'P';
 	}
+}
+
+void	move(t_data *data, char v, int y, int x)
+{
+	int	img_width;
+	int	img_height;
+
+	img_width = 80;
+	img_height = 80;
+	data->player_count ++;
+	move_show_count(data);
+	printf("%d\n", data->player_count);
+	if (v == 'E' && data->coin_point == 0)
+		exit(0);
+	move_to_c(v, data, y, x);
+	condetion42(v, data, y, x);
 	if (v == 'A')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,

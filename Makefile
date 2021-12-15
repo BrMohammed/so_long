@@ -1,4 +1,4 @@
-mlx = gcc -lmlx -framework OpenGL -framework AppKit so_long.c ft_split.c move.c error_game.c respone.c respone_obj.c hole_move.c ft_itoa.c
+mlx = gcc -lmlx -framework OpenGL -framework AppKit so_long.c ft_split.c move.c error_game.c respone.c respone_obj.c hole_move.c ft_itoa.c move_to_c.c
 #  github bigin
 # system("leaks a.out");
 ADD = git add .
