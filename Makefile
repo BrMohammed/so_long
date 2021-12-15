@@ -17,6 +17,7 @@ objets = $(FILES:.c=.o)
 
 $(NAME):$(objets)
 	$(CC) $(CFLAGS) $(MLX) -o $(NAME) $(FILES)
+
 all :$(NAME)
 
 	
@@ -30,6 +31,7 @@ re : fclean all
 
 #  github bigin
 # system("leaks a.out");
+
 ADD = git add .
 
 read :=	@echo "${C_GREEN}Add Commit Plz !!${C_RES}" && read -p "-> " enter \
@@ -37,7 +39,7 @@ read :=	@echo "${C_GREEN}Add Commit Plz !!${C_RES}" && read -p "-> " enter \
 
 PU = git push origin master
 
-commit = git log --graph --oneline --decorate HEAD^..HEAD 
+commit = git log --graph --oneline --decorate HEAD^..HEAD
 
 push :
 	@$(commit)

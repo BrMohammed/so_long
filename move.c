@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:22:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 01:46:09 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:58:58 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	move(t_data *data, char v, int y, int x)
 	img_height = 80;
 	data->player_count ++;
 	move_show_count(data);
-	printf("%d\n", data->player_count);
 	if (v == 'E' && data->coin_point == 0)
 		exit(0);
 	move_to_c(v, data, y, x);

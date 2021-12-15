@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 22:43:23 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 03:58:41 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:01:11 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	error_while(char **c, int i)
 	int	lenth_temp = 0;
 	while (c[i][len])
 	{
-		printf("%c", c[i][len]);
 		if (c[0][len] == '0' || c[i][0] == '0')
 			print_error();
 		if (c[i][len] != 'E' && c[i][len] != 'A'
@@ -53,7 +52,7 @@ void	error_while(char **c, int i)
 		print_error();
 }
 
-void	error_game(char **c, int error, int fd)
+void	error_game(char **c, int error, int fd, char *str)
 {
 	int	i;
 	int	lenth;
@@ -71,6 +70,14 @@ void	error_game(char **c, int error, int fd)
 	just25(c, i);
 	if (fd == -1)
 		print_error();
-	//if (data->coin_cont < 1 || data->player_cont != 1)
-	//	print_error();
+	i = 0;
+	while (str[i])
+	{
+		if(str[i] == '\n' && str[i + 1] == '\n')
+			print_error();
+		i++;
+	}
+	i--;
+	if(str[i] == '\n')
+		print_error();
 }

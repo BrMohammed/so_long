@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:31:36 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 01:59:06 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:00:29 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,10 @@ void	respone_obj(t_data *data)
 			condetion(data, &fd, &whith, &high);
 		fd++;
 		condetion42(data, fd, &high, &whith);
+	}
+	if (data->coin_cont < 1 || data->player_cont != 1)
+	{
+		printf("%s\n", "ERROR");
+		exit(0);
 	}
 }

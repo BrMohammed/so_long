@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 03:32:56 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:08:10 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,25 @@ int	key(int key, t_data *data)
 	return (0);
 }
 
-int	check(char *str)
+void	check(char *str)
 {
 	int	i;
+	char *ber;
+	int l;
 
+	ber = "reb.";
 	i = 0;
 	while (str[i])
-	{
-		if (str[i] == '.')
-			return (1);
 			i++;
+	i--;
+	l = 0;
+	while (ber[l] != '\0')
+	{
+		if(ber[l] != str[i])
+			exit(0);
+		l++;
+		i--;
 	}
-	return (0);
 }
 
 int	main(int ac, char **av)
@@ -90,12 +97,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		fd;
 	int		error;
-
-	// if(!check(av[1]))
-	// {
-	// 	printf("error\n");
-	// 	return (0);
-	// }
+	//check(av[1]);
 	error = 1;
 	data.bufer = malloc(1000);
 	if (ac == 2)
@@ -105,7 +107,7 @@ int	main(int ac, char **av)
 		data.bufer[error] = '\0';
 		close(fd);
 		data.result = ft_split(data.bufer, '\n');
-		error_game(data.result, error, fd);
+		error_game(data.result, error, fd, data.bufer);
 		respone(&data);
 		respone_obj(&data);
 		mlx_key_hook(data.mlx_win, &key, &data);

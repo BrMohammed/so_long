@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:19:04 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 03:33:07 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:54:41 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef struct s_data
 
 char	**ft_split(char *s, char c);
 void	move(t_data *data, char v, int y, int x);
-void	error_game(char **c, int error, int fd);
+void	error_game(char **c, int error, int fd, char *str);
 void	respone(t_data *data);
 void	respone_obj(t_data *data);
 int		hole_move(t_data *data);
