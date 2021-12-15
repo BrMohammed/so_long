@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 22:43:23 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 15:01:11 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:20:03 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	print_error(void)
 
 void	just25(char **c, int i)
 {
-	int	len = 0;
+	int	len;
+
+	len = 0;
 	while (c[i][len])
 	{
 		if (c[i][len] == '0')
@@ -33,8 +35,11 @@ void	just25(char **c, int i)
 
 void	error_while(char **c, int i)
 {
-	int	len = 0;
-	int	lenth_temp = 0;
+	int	len;
+	int	lenth_temp;
+
+	len = 0;
+	lenth_temp = 0;
 	while (c[i][len])
 	{
 		if (c[0][len] == '0' || c[i][0] == '0')
@@ -44,8 +49,8 @@ void	error_while(char **c, int i)
 		&& c[i][len] != 'P' && c[i][len] != '0')
 			print_error();
 		len++;
-	if (c[0][len] != '\0')
-		lenth_temp = len;
+		if (c[0][len] != '\0')
+			lenth_temp = len;
 	}
 	len--;
 	if (lenth_temp != len || c[i][len] == '0')
@@ -71,13 +76,12 @@ void	error_game(char **c, int error, int fd, char *str)
 	if (fd == -1)
 		print_error();
 	i = 0;
-	while (str[i])
+	while (str[++i])
 	{
-		if(str[i] == '\n' && str[i + 1] == '\n')
+		if (str[i] == '\n' && str[i + 1] == '\n')
 			print_error();
-		i++;
 	}
 	i--;
-	if(str[i] == '\n')
+	if (str[i] == '\n')
 		print_error();
 }

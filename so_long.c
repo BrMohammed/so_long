@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 15:08:10 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:24:18 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	key(int key, t_data *data)
 
 void	check(char *str)
 {
-	int	i;
-	char *ber;
-	int l;
+	int		i;
+	char	*ber;
+	int		l;
 
 	ber = "reb.";
 	i = 0;
@@ -85,7 +85,7 @@ void	check(char *str)
 	l = 0;
 	while (ber[l] != '\0')
 	{
-		if(ber[l] != str[i])
+		if (ber[l] != str[i])
 			exit(0);
 		l++;
 		i--;
@@ -97,7 +97,8 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		fd;
 	int		error;
-	//check(av[1]);
+
+	check(av[1]);
 	error = 1;
 	data.bufer = malloc(1000);
 	if (ac == 2)

@@ -6,11 +6,17 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:31:36 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 15:00:29 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:23:30 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	print_error(void)
+{
+	printf("%s\n", "ERROR");
+	exit(0);
+}
 
 static void	condetion_double(t_data *data, int *fd, int *whith, int *high)
 {
@@ -88,9 +94,6 @@ void	respone_obj(t_data *data)
 		fd++;
 		condetion42(data, fd, &high, &whith);
 	}
-	if (data->coin_cont < 1 || data->player_cont != 1)
-	{
-		printf("%s\n", "ERROR");
-		exit(0);
-	}
+	if (data->coin_cont < 1 || data->player_cont != 1 || data->door_cont < 1)
+		print_error();
 }
