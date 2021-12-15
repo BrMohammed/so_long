@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 22:43:23 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 02:06:58 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/15 03:58:41 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ void	print_error(void)
 	exit(0);
 }
 
-void	just25(t_data *data, int i, int len)
+void	just25(char **c, int i)
 {
-	while (data->result[i][len])
+	int	len = 0;
+	while (c[i][len])
 	{
-		if (data->result[i][len] == '0')
+		if (c[i][len] == '0')
 		{
 			print_error();
 		}
@@ -30,47 +31,46 @@ void	just25(t_data *data, int i, int len)
 	}
 }
 
-void	error_while(t_data *data, int i, int len, int lenth_temp)
+void	error_while(char **c, int i)
 {
-	while (data->result[i][len])
+	int	len = 0;
+	int	lenth_temp = 0;
+	while (c[i][len])
 	{
-		if (data->result[0][len] == '0' || data->result[i][0] == '0')
+		printf("%c", c[i][len]);
+		if (c[0][len] == '0' || c[i][0] == '0')
 			print_error();
-		if (data->result[i][len] != 'E' && data->result[i][len] != 'A'
-		&& data->result[i][len] != 'C' && data->result[i][len] != '1'
-		&& data->result[i][len] != 'P' && data->result[i][len] != '0')
+		if (c[i][len] != 'E' && c[i][len] != 'A'
+		&& c[i][len] != 'C' && c[i][len] != '1'
+		&& c[i][len] != 'P' && c[i][len] != '0')
 			print_error();
 		len++;
+	if (c[0][len] != '\0')
+		lenth_temp = len;
 	}
 	len--;
-	if (data->result[0][len])
-		lenth_temp = len;
-	if (lenth_temp != len || data->result[i][len] == '0')
+	if (lenth_temp != len || c[i][len] == '0')
 		print_error();
 }
 
-void	error_game(t_data *data, int error, int ac)
+void	error_game(char **c, int error, int fd)
 {
 	int	i;
-	int	len;
-	int	lenth_temp;
 	int	lenth;
 
 	i = 0;
-	len = 0;
-	lenth_temp = 0;
 	lenth = 0;
-	if (ac == 1 || ac > 2 || error <= 0)
+	if (error <= 0)
 		print_error();
-	while (data->result[i])
+	while (c[i])
 	{
-		len = 0;
-		error_while(data, i, len, lenth_temp);
+		error_while(c, i);
 		i++;
 	}
 	i--;
-	len = 0;
-	just25(data, i, len);
-	if (data->coin_cont < 1 || data->player_cont != 1)
+	just25(c, i);
+	if (fd == -1)
 		print_error();
+	//if (data->coin_cont < 1 || data->player_cont != 1)
+	//	print_error();
 }
