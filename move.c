@@ -6,39 +6,11 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:22:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 14:58:58 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/16 20:52:38 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	condetion_number(t_data *data, int *t, char *c, int *i)
-{
-	if (c[*i] == '2')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number2, *t, 0);
-	if (c[*i] == '3')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number3, *t, 0);
-	if (c[*i] == '4')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number4, *t, 0);
-	if (c[*i] == '5')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number5, *t, 0);
-	if (c[*i] == '6')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number6, *t, 0);
-	if (c[*i] == '7')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number7, *t, 0);
-	if (c[*i] == '8')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number8, *t, 0);
-	if (c[*i] == '9')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->number.number9, *t, 0);
-}
 
 void	move_show_count(t_data *data)
 {
@@ -51,20 +23,8 @@ void	move_show_count(t_data *data)
 	t = 0;
 	v = 0;
 	c = ft_itoa(data->player_count);
-	while (c[i] != '\0')
-	{	
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls, v, 0);
-		if (c[i] == '0')
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->number.number0, t, 0);
-		if (c[i] == '1')
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->number.number1, t, 0);
-		condetion_number(data, &t, c, &i);
-		t += 40;
-		i++;
-		v += 80;
-	}
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->walls, 0, 0);
+	mlx_string_put(data->mlx, data->mlx_win, 10, 10, 0xFFFFf, c);
 	free(c);
 }
 

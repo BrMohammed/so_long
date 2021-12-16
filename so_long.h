@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:19:04 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 18:21:07 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/16 20:54:54 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,40 +19,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
-
-typedef struct s_number
-{
-	void	*number0;
-	char	*number0_path;
-
-	void	*number1;
-	char	*number1_path;
-
-	void	*number2;
-	char	*number2_path;
-
-	void	*number3;
-	char	*number3_path;
-
-	void	*number4;
-	char	*number4_path;
-
-	void	*number5;
-	char	*number5_path;
-
-	void	*number6;
-	char	*number6_path;
-
-	void	*number7;
-	char	*number7_path;
-
-	void	*number8;
-	char	*number8_path;
-
-	void	*number9;
-	char	*number9_path;
-
-}	t_number;
 
 typedef struct s_data
 {
@@ -106,8 +72,6 @@ typedef struct s_data
 	int			img_height;
 
 	char		*bufer;
-
-	t_number	number;
 
 }	t_data;
 

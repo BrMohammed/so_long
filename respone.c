@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:12:15 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 00:18:24 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/16 20:54:16 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,6 @@ void	path(t_data *data)
 	data->player_left_path = "./assets/Idle_left.xpm";
 	data->dead_path = "./assets/dead.xpm";
 	data->hole_path = "./assets/ghost.xpm";
-	data->number.number0_path = "./assets/0.xpm";
-	data->number.number1_path = "./assets/1.xpm";
-	data->number.number2_path = "./assets/2.xpm";
-	data->number.number3_path = "./assets/3.xpm";
-	data->number.number4_path = "./assets/4.xpm";
-	data->number.number5_path = "./assets/5.xpm";
-	data->number.number6_path = "./assets/6.xpm";
-	data->number.number7_path = "./assets/7.xpm";
-	data->number.number8_path = "./assets/8.xpm";
-	data->number.number9_path = "./assets/9.xpm";
-}
-
-void	number_b(t_data *data)
-{
-	data->number.number0 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number0_path, &data->img_width, &data->img_height);
-	data->number.number1 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number1_path, &data->img_width, &data->img_height);
-	data->number.number2 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number2_path, &data->img_width, &data->img_height);
-	data->number.number3 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number3_path, &data->img_width, &data->img_height);
-	data->number.number4 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number4_path, &data->img_width, &data->img_height);
-	data->number.number5 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number5_path, &data->img_width, &data->img_height);
-	data->number.number6 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number6_path, &data->img_width, &data->img_height);
-	data->number.number7 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number7_path, &data->img_width, &data->img_height);
-	data->number.number8 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number8_path, &data->img_width, &data->img_height);
-	data->number.number9 = mlx_xpm_file_to_image(data->mlx,
-			data->number.number9_path, &data->img_width, &data->img_height);
 }
 
 void	x_y(t_data *data)
@@ -86,7 +52,6 @@ void	respone(t_data *data)
 {
 	x_y(data);
 	path(data);
-	number_b(data);
 	data->walls = mlx_xpm_file_to_image(data->mlx, data->walls_path,
 			&data->img_width, &data->img_height);
 	data->plat = mlx_xpm_file_to_image(data->mlx, data->plat_path,
