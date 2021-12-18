@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:19:04 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/16 20:54:54 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/19 00:35:01 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ void	respone(t_data *data);
 void	respone_obj(t_data *data);
 int		hole_move(t_data *data);
 char	*ft_itoa(int n);
-void	move_to_c(char v, t_data *data, int y, int x);
 
 #endif

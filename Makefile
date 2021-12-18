@@ -8,7 +8,7 @@ FLAGS	= -Wall -Wextra -Werror
 
 MLX =  -lmlx -framework OpenGL -framework AppKit
 
-FILES = error_game.c ft_itoa.c ft_split.c hole_move.c move_to_c.c \
+FILES = error_game.c ft_itoa.c ft_split.c hole_move.c \
 	move.c respone_obj.c respone.c so_long.c
 
 objets = $(FILES:.c=.o)
