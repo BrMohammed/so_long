@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/15 15:29:20 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:55:48 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,61 @@ int	mouse(void)
 	exit(0);
 	return (0);
 }
+// void condetion4242(char v, t_data *data)
+// {
+// 	int x = 0;
+// 	int y = 0;
+// 	while (data->result[y] != '\0')
+// 	{
+// 		while (data->result[y][x] != '\0')
+// 		{
+// 			x++;
+// 		}
+// 		x = 0;
+// 		y++;
+// 	}
+// }
 
 int	key(int key, t_data *data)
 {
-	g_d = data->result[(data->high / 80)][(data->whith / 80) + 1];
-	g_w = data->result[(data->high / 80) - 1][data->whith / 80];
-	g_a = data->result[data->high / 80][(data->whith / 80) - 1];
-	g_s = data->result[(data->high / 80) + 1][data->whith / 80];
+	int x = 0;
+	int y = 0;
+	int faux = 0;
+	
 	if (key == 53)
 		exit(0);
-	if (data->win == 0 && (key == 2 || key == 124) && (g_d == '0'
-			|| g_d == 'P' || g_d == 'C' || g_d == 'E' || g_d == 'A'))
-		move(data, g_d, 0, 1);
-	if (data->win == 0 && (key == 0 || key == 123) && (g_a == '0'
-			|| g_a == 'P' || g_a == 'C' || g_a == 'E' || g_a == 'A'))
-		move(data, g_a, 0, -1);
-	if (data->win == 0 && (key == 13 || key == 126) && (g_w == '0'
-			|| g_w == 'P' || g_w == 'C' || g_w == 'E' || g_w == 'A'))
-		move(data, g_w, -1, 0);
-	if (data->win == 0 && (key == 1 || key == 125) && (g_s == '0'
-			|| g_s == 'P' || g_s == 'C' || g_s == 'E' || g_s == 'A'))
-		move(data, g_s, 1, 0);
-	if (data->coin_point == 0)
-		door_open(data, 'E');
+	
+	while (data->result[y] != '\0')
+	{
+		while (data->result[y][x] != '\0')
+		{
+			if(data->result[y][x] == 'P' && faux == 0)
+			{
+				faux = 1;
+				g_d = data->result[y][x + 1];
+				g_w = data->result[y - 1][x];
+				g_a = data->result[y][x - 1];
+				g_s = data->result[y + 1][x];
+				if (data->win == 0 && (key == 2 || key == 124) && (g_d == '0'
+					|| g_d == 'P' || g_d == 'C' || g_d == 'E' || g_d == 'A'))
+						move(data, g_d, 0, 1);
+				if (data->win == 0 && (key == 0 || key == 123) && (g_a == '0'
+					|| g_a == 'P' || g_a == 'C' || g_a == 'E' || g_a == 'A'))
+						move(data, g_a, 0, -1);
+				if (data->win == 0 && (key == 13 || key == 126) && (g_w == '0'
+					|| g_w == 'P' || g_w == 'C' || g_w == 'E' || g_w == 'A'))
+						move(data, g_w, -1, 0);
+				if (data->win == 0 && (key == 1 || key == 125) && (g_s == '0'
+					|| g_s == 'P' || g_s == 'C' || g_s == 'E' || g_s == 'A'))
+						move(data, g_s, 1, 0);
+				if (data->coin_point == 0)
+					door_open(data, 'E');
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 	return (0);
 }
 

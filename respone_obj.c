@@ -6,83 +6,58 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:31:36 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/16 20:47:31 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/18 21:14:13 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	condetion_double(t_data *data, int *fd, int *whith, int *high)
-{
-	if (data->bufer[*fd] == 'P')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->player, *whith, *high);
-		data->high = *high;
-		data->whith = *whith;
-	}
-	if (data->bufer[*fd] == 'C')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->coin, *whith, *high);
-		data->coin_point++;
-	}
-	if (data->bufer[*fd] == 'A')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->hole, *whith, *high);
-		data->hole_high = *high;
-		data->hole_whith = *whith;
-	}
-}
-
-void	condetion(t_data *data, int *fd, int *whith, int *high)
-{
-	mlx_put_image_to_window(data->mlx, data->mlx_win,
-		data->plat, *whith, *high);
-	condetion_double(data, fd, whith, high);
-	if (data->bufer[*fd] == 'E')
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->door_open, *whith, *high);
-		data->door_high = *high;
-		data->door_whith = *whith;
-	}
-	*whith += 80;
-}
-
-static void	condetion42(t_data *data, int fd, int *high, int *whith)
-{
-	if (data->bufer[fd] == '\n')
-	{
-		*high += 80;
-		*whith = 0;
-	}
-}
-
 void	respone_obj(t_data *data)
 {
 	int	fd;
-	int	whith;
-	int	high;
+	int i;
 
 	fd = 0;
-	whith = 0;
-	high = 0;
+	i = 0;
 	data->coin_point = 0;
-	while (data->bufer[fd] != '\0')
+	while (data->result[fd] != '\0')
 	{
-		if (data->bufer[fd] == '1')
+		while (data->result[fd][i] != '\0')
 		{
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->walls, whith, high);
-			whith += 80;
+			if (data->result[fd][i] == '1')
+			{
+				mlx_put_image_to_window(data->mlx, data->mlx_win,
+					data->walls, i * 80, fd * 80);
+			}
+			else if (data->result[fd][i] == '0' || data->result[fd][i] == 'P'
+				|| data->result[fd][i] == 'C'
+				||data->result[fd][i] == 'E' || data->result[fd][i] == 'A')
+				mlx_put_image_to_window(data->mlx, data->mlx_win,
+				data->plat, i * 80, fd * 80);
+				if (data->result[fd][i] == 'P')
+				{
+					mlx_put_image_to_window(data->mlx, data->mlx_win,
+					data->player,i * 80, fd * 80);
+				}
+				if (data->result[fd][i] == 'C')
+				{
+					mlx_put_image_to_window(data->mlx, data->mlx_win,
+					data->coin, i * 80, fd * 80);
+					data->coin_point++;
+				}
+				if (data->result[fd][i] == 'A')
+				{
+					mlx_put_image_to_window(data->mlx, data->mlx_win,
+						data->hole, i * 80, fd * 80);
+				}
+				if (data->result[fd][i] == 'E')
+				{
+					mlx_put_image_to_window(data->mlx, data->mlx_win,
+					data->door_open,i * 80, fd * 80);
+				}
+			i++;
 		}
-		else if (data->bufer[fd] == '0' || data->bufer[fd] == 'P'
-			|| data->bufer[fd] == 'C'
-			||data->bufer[fd] == 'E' || data->bufer[fd] == 'A')
-			condetion(data, &fd, &whith, &high);
+		i = 0;
 		fd++;
-		condetion42(data, fd, &high, &whith);
 	}
 }

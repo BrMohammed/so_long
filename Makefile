@@ -1,12 +1,10 @@
 NAME = so_long
 
-mlx = gcc -lmlx -framework OpenGL -framework AppKit so_long.c ft_split.c move.c error_game.c respone.c respone_obj.c hole_move.c ft_itoa.c move_to_c.c
 CC = gcc
 
 AR	= ar -rcs
 
-
-CFLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 
 MLX =  -lmlx -framework OpenGL -framework AppKit
 
@@ -16,11 +14,10 @@ FILES = error_game.c ft_itoa.c ft_split.c hole_move.c move_to_c.c \
 objets = $(FILES:.c=.o)
 
 $(NAME):$(objets)
-	$(CC) $(CFLAGS) $(MLX) -o $(NAME) $(FILES)
+	$(CC) $(FLAGS) $(MLX) -o $(NAME) $(FILES)
 
 all :$(NAME)
 
-	
 clean :
 	$(RM) $(objets) $(objets_b)
 
