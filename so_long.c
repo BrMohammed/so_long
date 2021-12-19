@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/19 04:01:34 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/19 04:09:19 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,6 @@ int	mouse(void)
 	exit(0);
 	return (0);
 }
-// void condetion4242(char v, t_data *data)
-// {
-// 	int x = 0;
-// 	int y = 0;
-// 	while (data->result[y] != '\0')
-// 	{
-// 		while (data->result[y][x] != '\0')
-// 		{
-// 			x++;
-// 		}
-// 		x = 0;
-// 		y++;
-// 	}
-// }
-
 int	key(int key, t_data *data)
 {
 	int x = 0;
@@ -147,7 +132,6 @@ int keymouse(int button, int x,int y,t_data *data)
 							key(13,data);
 							f = 0;
 						}
-							
 					}
 					if (v[1] != t )
 					{
@@ -158,7 +142,6 @@ int keymouse(int button, int x,int y,t_data *data)
 							key(0,data);
 							f = 0;
 						}
-							
 					}
 				}
 				t++;
