@@ -4,17 +4,17 @@ CC = gcc
 
 AR	= ar -rcs
 
-FLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 MLX =  -lmlx -framework OpenGL -framework AppKit
 
-FILES = error_game.c ft_itoa.c ft_split.c hole_move.c \
+FILES = error_game.c ft_itoa.c ft_split.c hole_move.c destroy.c\
 	move.c respone_obj.c respone.c so_long.c
 
 objets = $(FILES:.c=.o)
 
 $(NAME):$(objets)
-	$(CC) $(FLAGS) $(MLX) -o $(NAME) $(FILES) -g3
+	$(CC) $(CFLAGS) $(MLX) -o $(NAME) $(FILES) -g3
 
 all :$(NAME)
 

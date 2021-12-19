@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:22:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/19 00:31:41 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/19 17:20:47 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	move_show_count(t_data *data)
 	
 	c = ft_itoa(data->player_count);
 	mlx_clear_window(data->mlx, data->mlx_win);
+	destroy(data);
+	respone2(data);
 	respone_obj(data);
 	mlx_string_put(data->mlx, data->mlx_win, 10, 10, 0xFFFFf, c);
 	free(c);
@@ -68,6 +70,7 @@ void	move(t_data *data, char v, int y, int x)
 				{
 					mlx_put_image_to_window(data->mlx, data->mlx_win, data->plat,
 						(t - x )* 80, (f - y) * 80);
+					
 					mlx_put_image_to_window(data->mlx, data->mlx_win, data->dead,
 						t * 80, f * 80);
 					data->win = 1;
