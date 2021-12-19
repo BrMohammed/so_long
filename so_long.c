@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/19 02:33:15 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/19 03:59:02 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int keymouse(int button, int x,int y,t_data *data)
 {
 	int t = 0;
 	int f = 0;
-	int faux = 0;
 	int v[2] = {y/80,x/80};
 	if (button == 1)
 	{
@@ -137,21 +136,30 @@ int keymouse(int button, int x,int y,t_data *data)
 		{
 			while (data->result[f][t] != '\0')
 			{
-				if (data->result[f][t] == 'P' && faux == 0)
+				if (data->result[f][t] == 'P' )
 				{
-					faux = 1;
-					int s[2] = {f + 1 , t};
-					int d[2] = {f , t + 1};
-					int w[2] = {f - 1 , t};
-					int a[2] = {f , t - 1};
-					 if(v[0] == s[0] && v[1] == s[1])
-					 	key(1,data);
-					if(v[0] == w[0] && v[1] == w[1])
-						key(13,data);
-					if(v[0] == d[0] && v[1] == d[1])
-						key(2,data);
-					if(v[0] == a[0] && v[1] == a[1])
-						key(0,data);
+					if (v[0] != f )
+					{
+						if(f < v[0])
+							key(1,data);						
+						if(f > v[0])
+						{
+							key(13,data);
+							f = 0;
+						}
+							
+					}
+					if (v[1] != t )
+					{
+						if(t < v[1])
+							key(2,data);
+						if(t > v[1])
+						{
+							key(0,data);
+							f = 0;
+						}
+							
+					}
 				}
 				t++;
 			}
@@ -159,7 +167,6 @@ int keymouse(int button, int x,int y,t_data *data)
 			f++;
 		}
 	}
-	
 	return(0);
 }
 

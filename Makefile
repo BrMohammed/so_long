@@ -14,7 +14,7 @@ FILES = error_game.c ft_itoa.c ft_split.c hole_move.c \
 objets = $(FILES:.c=.o)
 
 $(NAME):$(objets)
-	$(CC) $(FLAGS) $(MLX) -o $(NAME) $(FILES)
+	$(CC) $(FLAGS) $(MLX) -o $(NAME) $(FILES) -g3
 
 all :$(NAME)
 
