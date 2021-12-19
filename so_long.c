@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/18 23:55:48 by brmohamm         ###   ########.fr       */
+/*   Updated: 2021/12/19 02:33:15 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,45 @@ void	check(char *str)
 	}
 }
 
+
+int keymouse(int button, int x,int y,t_data *data)
+{
+	int t = 0;
+	int f = 0;
+	int faux = 0;
+	int v[2] = {y/80,x/80};
+	if (button == 1)
+	{
+		while (data->result[f] != '\0')
+		{
+			while (data->result[f][t] != '\0')
+			{
+				if (data->result[f][t] == 'P' && faux == 0)
+				{
+					faux = 1;
+					int s[2] = {f + 1 , t};
+					int d[2] = {f , t + 1};
+					int w[2] = {f - 1 , t};
+					int a[2] = {f , t - 1};
+					 if(v[0] == s[0] && v[1] == s[1])
+					 	key(1,data);
+					if(v[0] == w[0] && v[1] == w[1])
+						key(13,data);
+					if(v[0] == d[0] && v[1] == d[1])
+						key(2,data);
+					if(v[0] == a[0] && v[1] == a[1])
+						key(0,data);
+				}
+				t++;
+			}
+			t = 0;
+			f++;
+		}
+	}
+	
+	return(0);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -145,6 +184,7 @@ int	main(int ac, char **av)
 		respone(&data);
 		respone_obj(&data);
 		mlx_key_hook(data.mlx_win, &key, &data);
+		mlx_mouse_hook (data.mlx_win, &keymouse, &data);
 		mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
 		mlx_loop_hook(data.mlx, &hole_move, &data);
 		mlx_loop(data.mlx);
