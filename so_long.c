@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/19 04:09:19 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:05:55 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	mouse(void)
 	exit(0);
 	return (0);
 }
+
 int	key(int key, t_data *data)
 {
 	int x = 0;
@@ -158,6 +159,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		fd;
 	int		error;
+	int 	id;
 
 	if (av[1])
 		check(av[1]);
@@ -174,11 +176,20 @@ int	main(int ac, char **av)
 		respone(&data);
 		respone_obj(&data);
 		mlx_key_hook(data.mlx_win, &key, &data);
-		mlx_mouse_hook (data.mlx_win, &keymouse, &data);
+		mlx_mouse_hook (data.mlx_win, &keymouse, &data);	
 		mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
 		mlx_loop_hook(data.mlx, &hole_move, &data);
-		mlx_loop(data.mlx);
-		free(data.mlx);
+		id = fork();
+		if(id == 0)
+		{
+			system("while :; do afplay smb_gameover.wav; done");
+		}
+		else
+		{
+			mlx_loop(data.mlx);
+			free(data.mlx);
+		}
+		
 	}
 	return (0);
 }
