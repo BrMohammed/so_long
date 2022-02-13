@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Feb 13 14:56:39 2022
+# Make data base, printed on Sun Feb 13 15:30:22 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -35,6 +34,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 MLX = -lmlx -framework OpenGL -framework AppKit
 # environment
 _ = /usr/bin/make
+ 
 # makefile (from `Makefile', line 7)
 CFLAGS = -Wall -Wextra -Werror
 # makefile (from `Makefile', line 1)
@@ -44,11 +44,11 @@ ADD = git add .
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-8a9ce611-e090-4263-a005-b26859ab8ffb.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-076a38e0-e870-4883-93c5-0456a15073f0.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.KlLtRBzCoQ/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.GePHBHrkRr/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # makefile (from `Makefile', line 39)
@@ -66,7 +66,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 34)
 read := @echo "Add Commit Plz !!" && read -p "-> " enter && git commit -m $${enter}
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.G30FlMD1Er/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.zn3CKExdaj/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -134,7 +134,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000009.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.2344
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -143,8 +143,6 @@ XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000009.Electron
 __CF_USER_TEXT_ENCODING = 0x102D:0x0:0x0
 # makefile (from `Makefile', line 14)
 objets = $(FILES:.c=.o)
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -153,25 +151,22 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186e3
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
 # default
- 
 .INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 30749
+VSCODE_PID = 89047
 # makefile (from `Makefile', line 11)
 FILES = error_game.c ft_itoa.c ft_split.c hole_move.c destroy.c move.c respone_obj.c respone.c so_long.c
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=5/108=5%
+# Load=76/1024=7%, Rehash=0, Collisions=5/106=5%
 
 # Pattern-specific Variable Values
 
@@ -179,9 +174,9 @@ FILES = error_game.c ft_itoa.c ft_split.c hole_move.c destroy.c move.c respone_o
 
 # Directories
 
-# . (device 16777227, inode 1182786): 32 files, no impossibilities.
+# . (device 16777227, inode 1182786): 33 files, no impossibilities.
 
-# 32 files, no impossibilities in 1 directories.
+# 33 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -192,7 +187,7 @@ FILES = error_game.c ft_itoa.c ft_split.c hole_move.c destroy.c move.c respone_o
 # Not a target:
 respone.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:36
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -201,7 +196,7 @@ respone.o:
 # Not a target:
 ft_itoa.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:35
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -219,7 +214,7 @@ all: so_long
 # Not a target:
 hole_move.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:35
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -228,7 +223,7 @@ hole_move.o:
 # Not a target:
 ft_split.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:35
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -263,7 +258,7 @@ Makefile:
 # Not a target:
 respone_obj.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:36
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -299,7 +294,7 @@ clean:
 # Not a target:
 move.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-04 12:56:08
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -308,7 +303,7 @@ move.o:
 # Not a target:
 destroy.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:36
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -316,7 +311,7 @@ destroy.o:
 
 so_long: error_game.o ft_itoa.o ft_split.o hole_move.o destroy.o move.o respone_obj.o respone.o so_long.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-02-04 12:56:08
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -328,7 +323,7 @@ so_long: error_game.o ft_itoa.o ft_split.o hole_move.o destroy.o move.o respone_
 # Not a target:
 so_long.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-23 19:11:19
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -337,7 +332,7 @@ so_long.o:
 # Not a target:
 error_game.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:28:35
+#  Last modified 2022-02-13 15:29:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -356,6 +351,7 @@ error_game.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Feb 13 14:56:39 2022
+ 
+# Finished Make data base on Sun Feb 13 15:30:22 2022
 
  

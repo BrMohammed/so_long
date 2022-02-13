@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:19:04 by brmohamm          #+#    #+#             */
-/*   Updated: 2021/12/19 17:20:56 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:20:38 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+#include <signal.h>
 
 typedef struct s_data
 {

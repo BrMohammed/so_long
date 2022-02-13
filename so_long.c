@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:58:46 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/13 15:05:55 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:27:04 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	door_open(t_data *data, char temp)
 
 int	mouse(void)
 {
+	kill(0, SIGKILL);
 	exit(0);
 	return (0);
 }
@@ -53,7 +54,10 @@ int	key(int key, t_data *data)
 	int faux = 0;
 	
 	if (key == 53)
+	{
+		kill(0, SIGKILL);
 		exit(0);
+	}
 	
 	while (data->result[y] != '\0')
 	{
@@ -175,21 +179,22 @@ int	main(int ac, char **av)
 		error_game(data.result, error, fd, data.bufer);
 		respone(&data);
 		respone_obj(&data);
-		mlx_key_hook(data.mlx_win, &key, &data);
-		mlx_mouse_hook (data.mlx_win, &keymouse, &data);	
-		mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
-		mlx_loop_hook(data.mlx, &hole_move, &data);
 		id = fork();
 		if(id == 0)
 		{
-			system("while :; do afplay smb_gameover.wav; done");
-		}
-		else
+			system("while :; do afplay loop.mp3; done");
+		}	
+		mlx_key_hook(data.mlx_win, &key, &data);
+		mlx_mouse_hook (data.mlx_win, &keymouse, &data);
+		mlx_hook(data.mlx_win, 17, (1L << 17), &mouse, &data);
+		mlx_loop_hook(data.mlx, &hole_move, &data);
+		
+		if (id != 0)
 		{
 			mlx_loop(data.mlx);
 			free(data.mlx);
 		}
-		
+		kill(0, SIGKILL);
 	}
 	return (0);
 }

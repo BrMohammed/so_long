@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:22:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/04 12:56:07 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/13 15:33:12 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	move_show_count(t_data *data)
 	destroy(data);
 	respone2(data);
 	respone_obj(data);
-	mlx_string_put(data->mlx, data->mlx_win, 10, 10, 0xFFFFf, c);
+	mlx_string_put(data->mlx, data->mlx_win, 10, 10, 0xFFFFFFFF, c);
 	free(c);
 }
 
